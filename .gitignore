@@ -6,6 +6,7 @@
 *Db.script
 
 .settings
+.asscache
 
 stacktrace.log
 
