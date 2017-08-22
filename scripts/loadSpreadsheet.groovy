@@ -10,7 +10,7 @@ String left( String s, Integer max ) {
     }
 }
 
-db = Sql.newInstance( 'jdbc:postgresql://localhost/abcd', 'abcd', 'sloj92GOM', 'org.postgresql.Driver' )
+db = Sql.newInstance( 'jdbc:postgresql://localhost/abcd', 'myapp', 'sloj92GOM', 'org.postgresql.Driver' )
 
 def csvFile = new File('abcdAssets.csv')
 
@@ -43,13 +43,13 @@ csvFile.withReader{ reader ->
             phoneNumber = phoneOrEmail
         }
         db.execute """
-        INSERT INTO asset_suggestion( id, version, resolution, suggester_name, suggester_contact_info, suggester_comment,
-            name, description, organization, location, zero_cost, phone_number, email_address, url, schedule,
-            date_created, last_updated, administrator_comment, keywords )
+        INSERT INTO asset( id, version, name, description,
+            organization, location, zero_cost, phone_number, email_address, url,
+            schedule, keywords, date_created, last_updated )
         VALUES
-            ( ${++pk}, 0, '', ${suggesterName}, ${suggesterContactInfo}, ${suggesterComment}, ${name}, ${description},
+            ( ${++pk}, 0, ${name}, ${description},
             ${organization}, ${location}, ${zeroCost}, ${phoneNumber}, ${emailAddress}, ${url},
-            ${schedule}, ${dateCreated}, CURRENT_TIMESTAMP, '', '' );
+            ${schedule}, '', ${dateCreated}, CURRENT_TIMESTAMP );
         """
     }
 }

@@ -10,7 +10,7 @@ class AssetSuggestionService {
         def sug = AssetSuggestion.get( id )
 
         if( sug.version != params.long('version') ) {
-            throw new Exception('Stale address')
+            throw new Exception('Stale suggested asset')
         }
 
         sug.name = params.name

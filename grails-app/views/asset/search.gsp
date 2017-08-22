@@ -15,19 +15,19 @@
     </head>
 
     <body>
-        <h1>Assets containing "${q}"</h1>
+        <h1>Found ${assets.size()} assets containing "${q}"</h1>
 
         <table>
         <g:each in="${assets}" var="asset">
             <tr>
-                <td>
+                <td width="30%">
                     <g:link controller="asset" action="edit" id="${asset.id}">
                     ${asset.name}
                     </g:link>
                 </td>
-                <td>
-                    ${asset.organization}<br/>
-                    <em>${asset.shortDescription}&hellip;</em>
+                <td width="70%">
+                    <b>${asset.organization}</b><br/>
+                    <em>${asset.shortDescription}</em>
                 </td>
             </tr>
         </g:each>

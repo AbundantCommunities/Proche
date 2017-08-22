@@ -38,10 +38,20 @@ class Asset {
     }
 
     def getShortDescription( ) {
-        if( description.size() < 100 ) {
+        if( description.size() <= 160 ) {
             description
         } else {
-            description.substring( 100 )
+            // At least 161 characters. We will return a substring, but
+            // preferably we will try not to break in the middle of a word.
+            Integer idx = 161
+            while( idx ) {
+                Character iChar = description[idx]
+                if( ! Character.isLetterOrDigit(description[idx] as Character) ) {
+                    return description.substring( 0, idx ) + "..."
+                }
+                idx--
+            }
+            return description.substring( 0, 160 ) + "..."
         }
     }
 }

@@ -2,7 +2,7 @@ dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "org.postgresql.Driver"
-    username = "abcd"
+    username = "myapp"
     password = "sloj92GOM"
 }
 hibernate {

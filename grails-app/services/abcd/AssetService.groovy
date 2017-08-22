@@ -45,7 +45,7 @@ class AssetService {
     String locateOnMap( Asset asset ) {
         String loc = asset.location
         loc = URLEncoder.encode(loc, "UTF-8")
-        "https://www.google.ca/maps/place/${loc},+Edmonton,+AB+T6C+3T8"
+        "https://www.google.ca/maps/place/${loc},+Edmonton,+AB,+Canada"
     }
 
     def byFirstLetter( firstLetter ) {
@@ -56,5 +56,32 @@ class AssetService {
         }
         def result = query.findAll( )
         println "Found ${result.size()} assets starting with ${firstLetter}"
+    }
+
+    def update( params ) {
+        def id = params.long('id')
+        def asset = Asset.get( id )
+
+        if( asset.version != params.long('version') ) {
+            throw new Exception('Stale asset')
+        }
+
+        asset.name = params.name
+        asset.description = params.description
+        asset.organization = params.organization
+        asset.location = params.location
+        asset.zeroCost = params.zeroCost != null  // This field will be absent if checkbox is cleared
+        asset.phoneNumber = params.phoneNumber
+        asset.emailAddress = params.emailAddress
+        asset.url = params.url
+        asset.schedule = params.schedule
+        if( params.keywords ) {
+            println "keywords not null; size is ${params.keywords.size()}"
+            asset.keywords = params.keywords
+        } else {
+            println "keywords is null"
+        }
+
+        asset.save( flush:true, failOnError: true )
     }
 }

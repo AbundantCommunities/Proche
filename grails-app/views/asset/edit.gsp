@@ -56,6 +56,7 @@
                     <div class="fieldcontain  ">
                         <label for="zeroCost">
                             Free
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
                         <g:checkBox name="zeroCost" value="${asset.zeroCost}"/>
                     </div>
@@ -107,6 +108,14 @@
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="phoneNumber" value="${asset.phoneNumber}" id="phoneNumber" />
+                    </div>
+
+                    <div class="fieldcontain">
+                        <label for="keywords">
+                            Keywords
+                            <span class="required-indicator">&nbsp;</span>
+                        </label>
+                        <textarea name="keywords" maxlength="1000" id="keywords" >${asset.keywords}</textarea>
                     </div>
 
                     <div class="fieldcontain">

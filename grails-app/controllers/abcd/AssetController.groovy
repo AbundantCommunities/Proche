@@ -57,7 +57,7 @@ class AssetController {
             throw new RuntimeException( "asset.name is empty" )
         }
 
-        assetSuggestionService.update( params )
-        redirect controller:'asset', action:'seeOne', id:id
+        assetService.update( params )
+        redirect controller:'asset', action:'edit', id:id
     }
 }
