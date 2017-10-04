@@ -5,6 +5,10 @@ class AssetSuggestionController {
     //    static allowedMethods = [families:'GET', save:'POST']
     def assetSuggestionService
 
+    /**
+     * We summarize the suggestions we have on file and offer a link
+     * to see the unresolved ones (so that we can make them publicly visible).
+     */
     def index() {
         [
             all: AssetSuggestion.count( ),
@@ -27,6 +31,9 @@ class AssetSuggestionController {
     }
     
     def save() {
+        def recaptchaResponse = params.'g-recaptcha-response'
+        println "GOOGLE RECAPTCH RESPONSE = ${recaptchaResponse}"
+
         def id = params.long('id')
         String button = params.button
         println "Button is ${button}"

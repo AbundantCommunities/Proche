@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="/ABCD/assets/application.css?compile=false" />
 
         <script src="/ABCD/assets/application.js?compile=false" type="text/javascript" ></script>
-
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         <meta name="layout" content="main">
     </head>
 
@@ -162,6 +162,8 @@
                     <input type="submit" name="button" value="Accept" class="accept" />
                     <input type="submit" name="button" value="Reject" class="reject" />
                 </fieldset>
+                
+                <div class="g-recaptcha" data-sitekey="6LddMzMUAAAAAJFsqRBHKFWB0dCC1vvzJmX5yp6S"></div>
             </form>
         </div>
     </body>
