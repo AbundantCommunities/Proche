@@ -10,6 +10,9 @@ String left( String s, Integer max ) {
     }
 }
 
+println "Which table, Asset or AssetSuggestion?"
+def tableName = System.in.newReader().readLine()
+
 db = Sql.newInstance( 'jdbc:postgresql://localhost/abcd', 'myapp', 'sloj92GOM', 'org.postgresql.Driver' )
 
 def csvFile = new File('abcdAssets.csv')
@@ -42,17 +45,35 @@ csvFile.withReader{ reader ->
             emailAddress = ''
             phoneNumber = phoneOrEmail
         }
-        db.execute """
-        INSERT INTO asset( id, version, name, description,
-            organization, location, zero_cost, phone_number, email_address, url,
-            schedule, keywords, date_created, last_updated )
-        VALUES
-            ( ${++pk}, 0, ${name}, ${description},
-            ${organization}, ${location}, ${zeroCost}, ${phoneNumber}, ${emailAddress}, ${url},
-            ${schedule}, '', ${dateCreated}, CURRENT_TIMESTAMP );
-        """
+        switch( tableName.toLowerCase() ) {
+        case "asset":
+            db.execute """
+            INSERT INTO asset( id, version, name, description,
+                organization, location, zero_cost, phone_number, email_address, url,
+                schedule, keywords, date_created, last_updated )
+            VALUES
+                ( ${++pk}, 0, ${name}, ${description},
+                ${organization}, ${location}, ${zeroCost}, ${phoneNumber}, ${emailAddress}, ${url},
+                ${schedule}, '', ${dateCreated}, CURRENT_TIMESTAMP );
+            """
+            break
+        case "assetsuggestion":
+            db.execute """
+            INSERT INTO asset_suggestion( id, version, name, description,
+                organization, location, zero_cost, phone_number, email_address, url,
+                schedule, keywords, date_created, last_updated,
+                administrator_comment, resolution, suggester_comment,
+                suggester_contact_info, suggester_name )
+            VALUES
+                ( ${++pk}, 0, ${name}, ${description},
+                ${organization}, ${location}, ${zeroCost}, ${phoneNumber}, ${emailAddress}, ${url},
+                ${schedule}, '', ${dateCreated}, CURRENT_TIMESTAMP,
+                'no admin comment', 'N', 'no suggester comment',
+                'suggester contact info', 'suggester name' );
+            """
+        }
     }
 }
 
-println "Loaded ${pk} assets"
+println "Loaded ${pk} rows to ${tableName}"
 db.connection.close( )
