@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
-        <title>Edit Suggested Asset</title>
+        <title>Suggest a New Asset</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,13 +22,13 @@
     <body>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="/ABCD/">Home</a></li>
+                <li><a class="home" href="/">Home</a></li>
                 <li><a href="<g:createLink controller='AssetSuggestion' action='list'/>" class="list">List Suggested Assets</a></li>
             </ul>
         </div>
 
         <div id="edit-assetSuggestion" class="content scaffold-edit" role="main">
-            <h1>Edit Suggested Asset</h1>
+            <h1>Will Become Anon Suggestion</h1>
 
             <form action="<g:createLink controller='AssetSuggestion' action='save'/>" method="POST">
 

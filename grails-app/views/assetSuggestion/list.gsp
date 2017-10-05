@@ -3,28 +3,81 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Suggested Asset List</title>
+        <title>Suggested Assets</title>
 
         <link rel="stylesheet" href="/ABCD/assets/main.css?compile=false" />
         <link rel="stylesheet" href="/ABCD/assets/mobile.css?compile=false" />
         <link rel="stylesheet" href="/ABCD/assets/application.css?compile=false" />
 
-        <script src="/ABCD/assets/application.js?compile=false" type="text/javascript" ></script>
-
+        <script src="/Proche/assets/application.js?compile=false" type="text/javascript" ></script>
         <meta name="layout" content="main">
+
+        <style>
+        .step {
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .nextLink {
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .prevLink {
+            padding: 10px;
+            color: black;        
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .currentStep {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .step.gap {
+            display: none;
+        }
+
+        .step:hover:not(.active) {
+            background-color: #ddd;
+        }
+        </style>
     </head>
 
     <body>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="/ABCD/">Home</a></li>
+                <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
             </ul>
         </div>
 
         <table>
         <g:each in="${sugs}" var="sug">
-            <tr><td><g:link controller="AssetSuggestion" action="seeOne" id="${sug.id}">${sug.name}</g:link></td><td>${sug.organization}</td></tr>
+            <tr>
+                <td width="30%">
+                    <g:link controller="assetSuggestion" action="edit" id="${sug.id}">
+                    ${sug.name}
+                    </g:link>
+                </td>
+                <td width="70%">
+                    <b>${sug.organization}</b><br/>
+                    <em>${sug.shortDescription}</em>
+                </td>
+            </tr>
         </g:each>
         </table>
+        <br/>
+        &nbsp;&nbsp;&nbsp;
+        <g:paginate total="${sugCount}" max="5", maxsteps="4", omitFirst="true", omitLast="true" />
     </body>
 </html>

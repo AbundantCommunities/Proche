@@ -19,14 +19,24 @@ class AssetSuggestionController {
     }
     
     def list() {
+        Long offset
+        Integer max
+        if( !params.max ) {
+            offset = 0
+            max = 5
+        } else {
+            offset = params.long('offset')
+            max = params.int('max')
+        }
         [
-            sugs: AssetSuggestion.findAllByResolution( 'N',  [sort: 'name', order: 'asc'] )
+            sugs: AssetSuggestion.findAllByResolution( 'N',  [max:max, offset:offset, sort:'name'] ),
+            sugCount: AssetSuggestion.count()
         ]
     }
 
     def seeOne(){
         [
-            sug: AssetSuggestion.get( Long.valueOf(params.id) )
+            sug: AssetSuggestion.get( params.long(id) )
         ]
     }
     
