@@ -31,10 +31,21 @@ class AssetController {
             countsByLetter: assetService.firstLetters( )
         ]
     }
-    
-    def listForLetter() {
+
+    def list() {
+        // TODO this code is non-DRY WRT AssetSuggestionController
+        Long offset
+        Integer max
+        if( !params.max ) {
+            offset = 0
+            max = 5
+        } else {
+            offset = params.long('offset')
+            max = params.int('max')
+        }
         [
-            assets: assetService.byFirstLetter( params.firstLetter )
+            assets: Asset.list( max:max, offset:offset, sort:'name' ),
+            assetCount: Asset.count()
         ]
     }
     

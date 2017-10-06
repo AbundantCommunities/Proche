@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Suggested Assets</title>
+        <title>Asset List</title>
 
         <link rel="stylesheet" href="/ABCD/assets/main.css?compile=false" />
         <link rel="stylesheet" href="/ABCD/assets/mobile.css?compile=false" />
@@ -55,23 +55,25 @@
     </head>
 
     <body>
+        <h1>${assetCount} Assets On File</h1>
+
         <table>
-        <g:each in="${sugs}" var="sug">
+        <g:each in="${assets}" var="asset">
             <tr>
                 <td width="30%">
-                    <g:link controller="assetSuggestion" action="edit" id="${sug.id}">
-                    ${sug.name}
+                    <g:link controller="asset" action="edit" id="${asset.id}">
+                    ${asset.name}
                     </g:link>
                 </td>
                 <td width="70%">
-                    <b>${sug.organization}</b><br/>
-                    <em>${sug.shortDescription}</em>
+                    <b>${asset.organization}</b><br/>
+                    <em>${asset.shortDescription}</em>
                 </td>
             </tr>
         </g:each>
         </table>
         <br/>
         &nbsp;&nbsp;&nbsp;
-        <g:paginate total="${sugCount}" max="5", maxsteps="4", omitFirst="true", omitLast="true" />
+        <g:paginate total="${assetCount}" max="5", maxsteps="4" />
     </body>
 </html>

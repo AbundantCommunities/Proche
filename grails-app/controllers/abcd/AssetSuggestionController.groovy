@@ -17,7 +17,7 @@ class AssetSuggestionController {
             rejected: AssetSuggestion.countByResolution('R')
         ]
     }
-    
+
     def list() {
         Long offset
         Integer max

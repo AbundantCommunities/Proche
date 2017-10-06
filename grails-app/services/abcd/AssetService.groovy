@@ -6,6 +6,7 @@ import java.net.URLEncoder
 @Transactional
 class AssetService {
 
+    // TODO Consider removing firstLetters etc
     def firstLetters() {
         def assets = AssetSuggestion.list( [sort: 'name', order: 'asc'] )
         def result = [ ]
