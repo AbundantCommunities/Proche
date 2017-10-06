@@ -55,8 +55,6 @@
     </head>
 
     <body>
-        <h1>${assetCount} Assets On File</h1>
-
         <table>
         <g:each in="${assets}" var="asset">
             <tr>

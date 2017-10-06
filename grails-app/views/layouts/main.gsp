@@ -20,8 +20,9 @@
     <div class="nav" role="navigation">
         <ul>
             <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
-            <li><a class="home" href="${createLink(uri: '/asset/list')}">Assets</a></li>
-            <li><a class="home" href="${createLink(uri: '/assetSuggestion/list')}">Suggestions</a></li>
+            <li><a class="home" href="${createLink(uri: '/asset/list')}">Alphabetical List</a></li>
+            <li><a class="home" href="${createLink(uri: '/asset/searchForm')}">Search</a></li>
+            <li><a class="home" href="${createLink(uri: '/assetSuggestion/list')}">Suggest!</a></li>
         </ul>
     </div>
 

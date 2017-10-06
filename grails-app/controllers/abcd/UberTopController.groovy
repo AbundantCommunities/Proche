@@ -2,5 +2,9 @@ package abcd
 
 class UberTopController {
 
-    def index() { }
+    def index() {
+        [
+            assetCount: Asset.count()
+        ]
+    }
 }

@@ -20,13 +20,6 @@
     </head>
 
     <body>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="/ABCD/">Home</a></li>
-                <li><a href="<g:createLink controller='asset' action='initSearch'/>" class="list">Search Assets</a></li>
-            </ul>
-        </div>
-
         <div id="edit-asset" class="content scaffold-edit" role="main">
             <h1>Edit Asset</h1>
 
