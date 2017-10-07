@@ -6,7 +6,8 @@ class AssetController {
     def assetService
 
     def initSearch( ) {
-        // maybe do something
+        // I wish I could remember how to specify a URI for our form so that
+        // this closure is not required!
     }
 
     def search( ) {

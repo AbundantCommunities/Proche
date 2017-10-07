@@ -184,7 +184,13 @@ img {
 	text-decoration: underline;
 }
 
-.nav a.home, .nav a.list, .nav a.create {
+.nav a.home, .nav a.list, .nav a.search,  .nav a.suggest {
+	background-position: 0.7em center;
+	background-repeat: no-repeat;
+	text-indent: 25px;
+}
+
+.nav a.doSearch {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
@@ -198,8 +204,16 @@ img {
 	background-image: url(../images/skin/database_table.png);
 }
 
-.nav a.create {
-	background-image: url(../images/skin/database_add.png);
+.nav a.suggest {
+	background-image: url(../images/suggest.png);
+}
+
+.nav a.search {
+	background-image: url(../images/search.png);
+}
+
+.buttons a.doSearch {
+	background-image: url(../images/doSearch.png);
 }
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */
