@@ -8,11 +8,10 @@ class AssetSuggestionService {
     /**
      * Anonymous user offers a suggested asset. We use Google's reCaptcha.
      */
-    def offer( params ) {
+    def saveOffer( params ) {
         def recaptcha = params['g-recaptcha-response']
         println "GOOGLE RECAPTCH RESPONSE = ${recaptcha}"
 
-        def id = params.long('id')
         def sug = new AssetSuggestion( )
 
         sug.name = params.name
@@ -24,8 +23,13 @@ class AssetSuggestionService {
         sug.emailAddress = params.emailAddress
         sug.url = params.url
         sug.schedule = params.schedule
-        sug.administratorComment = params.administratorComment
-        sug.keywords = params.keywords
+        sug.suggesterComment = params.suggesterComment
+        sug.suggesterContactInfo = params.suggesterContactInfo
+        sug.suggesterName = params.suggesterName
+
+        sug.resolution = 'N'
+        sug.administratorComment = 'admin comment'
+        sug.keywords = 'keywords'
 
         sug.save( flush:true, failOnError: true )
     }

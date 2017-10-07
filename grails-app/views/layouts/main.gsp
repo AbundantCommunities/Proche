@@ -22,7 +22,7 @@
             <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
             <li><a class="list" href="${createLink(uri: '/asset/list')}">List</a></li>
             <li><a class="search" href="${createLink(uri: '/asset/initSearch')}">Search</a></li>
-            <li><a class="suggest" href="${createLink(uri: '/assetSuggestion/list')}">Suggest</a></li>
+            <li><a class="suggest" href="${createLink(uri: '/assetSuggestion/emptyForm')}">Suggest</a></li>
         </ul>
     </div>
 

@@ -34,16 +34,23 @@ class AssetSuggestionController {
         ]
     }
 
-    def seeOne(){
-        [
-            sug: AssetSuggestion.get( params.long(id) )
-        ]
+    def emptyForm(){
+        // nothing to do here; we'll just present an empty form to the user.
     }
-    
-    def save() {
+
+    def saveOffer() {
         def recaptchaResponse = params.'g-recaptcha-response'
         println "GOOGLE RECAPTCH RESPONSE = ${recaptchaResponse}"
 
+        if( !params.name ) {
+            throw new RuntimeException( "assetSuggestion.name is empty" )
+        }
+
+        assetSuggestionService.saveOffer( params )
+        redirect controller:'uberTop'
+    }
+
+    def save() {
         def id = params.long('id')
         String button = params.button
         println "Button is ${button}"
