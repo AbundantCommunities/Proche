@@ -21,7 +21,7 @@
 
             <div class="fieldcontain  required">
                 <label for="q">
-                    Term
+                    Search for:
                 </label>
                 <input type="text" name="q" size="50" required value="" id="q" />
             </div>
