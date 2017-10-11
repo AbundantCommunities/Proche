@@ -64,6 +64,32 @@ body {
 	height: 100%;
 }
 
+.flashcontainer {
+    margin:auto;
+    position:relative;
+    width: 949px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius:5px;
+    height: 70px;
+}
+.flashcontent {
+  position: absolute;
+  width:949px;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+ }
+.flashsuccess {
+    background-color: #9DE091;
+}
+.flashfailure {
+    background-color: #FF6757;
+}
+.flashwarning {
+    background-color: #FFE173;
+}
+
 a:link, a:visited, a:hover {
 	color: #48802c;
 }

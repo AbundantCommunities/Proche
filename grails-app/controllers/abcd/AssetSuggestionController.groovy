@@ -47,6 +47,9 @@ class AssetSuggestionController {
         }
 
         assetSuggestionService.saveOffer( params )
+
+        flash.message = "Thanks for your suggestion"
+        flash.nature = 'SUCCESS'
         redirect controller:'uberTop'
     }
 
