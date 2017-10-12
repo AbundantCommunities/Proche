@@ -72,6 +72,6 @@
         </table>
         <br/>
         &nbsp;&nbsp;&nbsp;
-        <g:paginate total="${assetCount}" max="5", maxsteps="4" />
+        <g:paginate total="${assetCount}"/>
     </body>
 </html>

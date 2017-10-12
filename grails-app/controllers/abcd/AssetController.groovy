@@ -37,17 +37,42 @@ class AssetController {
         // TODO this code is non-DRY WRT AssetSuggestionController
         Long offset
         Integer max
-        if( !params.max ) {
-            offset = 0
-            max = 5
-        } else {
+        if( params.offset ) {
             offset = params.long('offset')
             max = params.int('max')
+        } else {
+            if( session.pagination ) {
+                offset = session.pagination.offset
+                max = session.pagination.max
+            } else {
+                offset = 0
+                max = 5
+            }
+            params.offset = offset
+            params.max = max
         }
+        session.pagination = [ offset:offset, max:max ]
         [
             assets: Asset.list( max:max, offset:offset, sort:'name' ),
             assetCount: Asset.count()
         ]
+    }
+    
+    def view( ){
+        Long id = params.long('id')
+        // We track offset & max for returning to paginated list view
+        Long offset = params.long('offset')
+        Integer max = params.int('max')
+
+        Asset asset = Asset.get( id )
+        if( asset ) {
+            [
+                asset: asset,
+                mapLink: assetService.locateOnMap( asset )
+            ]
+        } else {
+            throw new Exception( "Asset ${id} not found")
+        }
     }
     
     def edit( ){

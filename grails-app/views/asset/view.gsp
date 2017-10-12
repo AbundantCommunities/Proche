@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
-        <title>Edit Asset</title>
+        <title>View Asset</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -23,25 +23,20 @@
         <div id="edit-asset" class="content scaffold-edit" role="main">
             <h1>Asset Details</h1>
 
-            <form action="<g:createLink controller='Asset' action='save'/>" method="POST">
-
-                <input type="hidden" name="id" value="${asset.id}" />
-                <input type="hidden" name="version" value="${asset.version}" id="version" />
-
+            <form>
                 <fieldset class="form">
-
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain">
                         <label for="name">
                             Asset Name
                         </label>
-                        <input type="text" name="name" readonly size="50" required="" value="${asset.name}" id="name" />
+                        <input type="text" name="name" readonly size="50" value="${asset.name}" id="name" />
                     </div>
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain">
                         <label for="organization">
                             Organization
                         </label>
-                        <input type="text" name="organization" readonly size="50" required="" value="${asset.organization}" id="organization" />
+                        <input type="text" name="organization" readonly size="50" value="${asset.organization}" id="organization" />
                     </div>
 
                     <div class="fieldcontain  ">
@@ -51,11 +46,11 @@
                         <g:checkBox name="zeroCost" readonly value="${asset.zeroCost}"/>
                     </div>
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain">
                         <label for="description">
                             Description
                         </label>
-                        <textarea name="description" readonly maxlength="1000" required="" id="description" >${asset.description}</textarea>
+                        <textarea name="description" readonly maxlength="1000" id="description" >${asset.description}</textarea>
                     </div>
 
                     <div class="fieldcontain">
@@ -107,7 +102,6 @@
                         </label>
                         <input type="text" name="dateCreated" readonly value="${asset.dateCreated}" id="dateCreated" />
                     </div>
-
                 </fieldset>
             </form>
         </div>
