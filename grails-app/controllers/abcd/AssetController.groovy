@@ -60,24 +60,24 @@ class AssetController {
         ]
     }
     
-    def view( ){
-        Long id = params.long('id')
-        // We track offset & max for returning to paginated list view
-        Long offset = params.long('offset')
-        Integer max = params.int('max')
-
-        Asset asset = Asset.get( id )
-        if( asset ) {
-            [
-                asset: asset,
-                mapLink: assetService.locateOnMap( asset )
-            ]
-        } else {
-            throw new Exception( "Asset ${id} not found")
-        }
-    }
+//    def view( ){
+//        Long id = params.long('id')
+//        // We track offset & max for returning to paginated list view
+//        Long offset = params.long('offset')
+//        Integer max = params.int('max')
+//
+//        Asset asset = Asset.get( id )
+//        if( asset ) {
+//            [
+//                asset: asset,
+//                mapLink: assetService.locateOnMap( asset )
+//            ]
+//        } else {
+//            throw new Exception( "Asset ${id} not found")
+//        }
+//    }
     
-    def edit( ){
+    def view( ){
         Long id = params.long('id')
         Asset asset = Asset.get( id )
         if( asset ) {
@@ -91,12 +91,12 @@ class AssetController {
     }
     
     def save() {
-        def id = params.long('id')
-        if( !params.name ) {
-            throw new RuntimeException( "asset.name is empty" )
-        }
-
-        assetService.update( params )
-        redirect controller:'asset', action:'edit', id:id
+//        def id = params.long('id')
+//        if( !params.name ) {
+//            throw new RuntimeException( "asset.name is empty" )
+//        }
+//
+//        assetService.update( params )
+//        redirect controller:'asset', action:'edit', id:id
     }
 }

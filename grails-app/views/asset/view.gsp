@@ -55,7 +55,7 @@
 
                     <div class="fieldcontain">
                         <label for="schedule">
-                            Schedule
+                            When
                         </label>
                         <input type="text" name="schedule" readonly size="70" value="${asset.schedule}" id="schedule" />
                     </div>

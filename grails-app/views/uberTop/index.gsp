@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Public Assets in Bannerman, Clareview, Fraser, Hairsine & Kirkness</h1>
+    <h1>Public Assets in Bannerman, Clareview Campus, Fraser, Hairsine & Kirkness</h1>
     <br/>
     <p>
         This website is not ready for general use.

@@ -21,7 +21,7 @@
 
     <body>
         <div id="edit-assetSuggestion" class="content scaffold-edit" role="main">
-            <h1>Asset Suggestion</h1>
+            <h1>Asset Suggestion (<a href="https://public.3.basecamp.com/p/qB5JKpEC5Yts3Tjk6L38wHnK">Help</a>)</h1>
 
             <form action="<g:createLink controller='AssetSuggestion' action='saveOffer'/>" method="POST">
 
@@ -100,7 +100,7 @@
 
                     <div class="fieldcontain">
                         <label for="suggesterName">
-                            Suggester Name
+                            YOUR Name
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="suggesterName" value="" id="suggesterName" />
@@ -108,7 +108,7 @@
 
                     <div class="fieldcontain">
                         <label for="suggesterContactInfo">
-                            Suggester Contact Info
+                            YOUR Contact Info
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="suggesterContactInfo" value="" id="suggesterContactInfo" />
@@ -116,7 +116,7 @@
 
                     <div class="fieldcontain">
                         <label for="suggesterComment">
-                            Suggester Comment
+                            YOUR Comments
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <textarea name="suggesterComment" id="suggesterComment" ></textarea>
