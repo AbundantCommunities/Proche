@@ -23,7 +23,8 @@ class AssetController {
         [
             q: q,
             offset: offset,
-            assets: assetService.search( q, offset )
+            assets: assetService.search( q, offset ),
+            suggestionCount: AssetSuggestion.count()
         ]
     }
 
@@ -54,7 +55,8 @@ class AssetController {
         session.pagination = [ offset:offset, max:max ]
         [
             assets: Asset.list( max:max, offset:offset, sort:'name' ),
-            assetCount: Asset.count()
+            assetCount: Asset.count(),
+            suggestionCount: AssetSuggestion.count()
         ]
     }
     

@@ -4,7 +4,8 @@ class UberTopController {
 
     def index() {
         [
-            assetCount: Asset.count()
+            assetCount: Asset.count(),
+            suggestionCount: AssetSuggestion.count()
         ]
     }
 }

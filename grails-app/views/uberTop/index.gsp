@@ -24,5 +24,9 @@
         Use the links above to have a look at them
         or to <em>suggest an asset we don't have</em>.
     </p>
+    <br/>
+    <g:if test="${suggestionCount>0}">
+        <p>We have ${suggestionCount} suggestions waiting for approval.</p>
+    </g:if>
 </body>
 </html>

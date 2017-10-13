@@ -16,6 +16,9 @@
 
     <body>
         <h1>Found ${assets.size()} assets containing "${q}"</h1>
+        <g:if test="${suggestionCount>0}">
+            <p>We have ${suggestionCount} suggestions waiting for approval; they cannot be searched for.</p>
+        </g:if>
 
         <table>
         <g:each in="${assets}" var="asset">
