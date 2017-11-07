@@ -24,7 +24,7 @@
         <g:each in="${assets}" var="asset">
             <tr>
                 <td width="30%">
-                    <g:link controller="asset" action="edit" id="${asset.id}">
+                    <g:link controller="asset" action="view" id="${asset.id}">
                     ${asset.name}
                     </g:link>
                 </td>
