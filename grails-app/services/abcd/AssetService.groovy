@@ -45,6 +45,17 @@ class AssetService {
 
     String locateOnMap( Asset asset ) {
         String loc = asset.location
+        if( loc.endsWith("NW") ) {
+            loc += ", Edmonton, AB, Canada"
+        } else {
+            def tail = loc.indexOf(" NW,")
+            if( tail > 0 ) {
+                loc = loc.substring( 0, tail ) + " NW, Edmonton, AB, Canada"
+            } else {
+                loc += " NW, Edmonton, AB, Canada"
+            }
+        }
+        println loc
         loc = URLEncoder.encode(loc, "UTF-8")
         "https://www.google.ca/maps/place/${loc},+Edmonton,+AB,+Canada"
     }

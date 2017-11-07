@@ -9,24 +9,23 @@
 </head>
 
 <body>
-    <h1>Public Assets in Bannerman, Clareview Campus, Fraser, Hairsine & Kirkness</h1>
+    <h1>&nbsp;Public Assets in Bannerman, Clareview Campus, Fraser, Hairsine & Kirkness</h1>
     <br/>
     <p>
         This website is not ready for general use.
         We are building up a list of
         <a href="https://en.wikipedia.org/wiki/Asset-based_community_development">assets</a>
-        that anyone living in Bannerman, Clareview, Fraser, Hairsine or Kirkness can take
-        advantage of.
+        that anyone can take advantage of.
     </p>
+    <br/>
+    <g:if test="${suggestionCount>0}">
+        <p><em>We have ${suggestionCount} suggestions waiting for approval.</em></p>
+    </g:if>
     <br/>
     <p>
         We have ${assetCount} assets on file so far.
         Use the links above to have a look at them
-        or to <em>suggest an asset we don't have</em>.
+        or to suggest an asset we don't have.
     </p>
-    <br/>
-    <g:if test="${suggestionCount>0}">
-        <p>We have ${suggestionCount} suggestions waiting for approval.</p>
-    </g:if>
 </body>
 </html>
