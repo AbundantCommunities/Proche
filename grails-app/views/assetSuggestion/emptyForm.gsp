@@ -15,13 +15,12 @@
         <link rel="stylesheet" href="/ABCD/assets/application.css?compile=false" />
 
         <script src="/ABCD/assets/application.js?compile=false" type="text/javascript" ></script>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
         <meta name="layout" content="main">
     </head>
 
     <body>
         <div id="edit-assetSuggestion" class="content scaffold-edit" role="main">
-            <h1>Asset Suggestion (<a href="https://public.3.basecamp.com/p/qB5JKpEC5Yts3Tjk6L38wHnK">Help</a>)</h1>
+            <h1>Asset Suggestion (<a href="https://public.3.basecamp.com/p/qB5JKpEC5Yts3Tjk6L38wHnK" target="_blank">Help</a>)</h1>
 
             <form action="<g:createLink controller='AssetSuggestion' action='saveOffer'/>" method="POST">
 
@@ -122,8 +121,6 @@
                         <textarea name="suggesterComment" id="suggesterComment" ></textarea>
                     </div>
                 </fieldset>
-
-                <div class="g-recaptcha" data-sitekey="6LddMzMUAAAAAJFsqRBHKFWB0dCC1vvzJmX5yp6S"></div>
 
                 <fieldset class="buttons">
                     <input type="submit" name="button" value="Submit" class="save" />
