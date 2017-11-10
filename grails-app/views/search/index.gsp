@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sample title</title>
+        <title>Search Public Assets</title>
     </head>
     <body>
         <h2>What do you want to search for?</h2>

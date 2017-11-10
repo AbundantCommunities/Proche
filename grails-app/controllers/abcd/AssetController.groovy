@@ -2,12 +2,13 @@ package abcd
 
 class AssetController {
 
-    //    static allowedMethods = [families:'GET', save:'POST']
+    //  static allowedMethods = [families:'GET', save:'POST']
     def assetService
 
     def initSearch( ) {
         // I wish I could remember how to specify a URI for our form so that
         // this closure is not required!
+        log.info "Init a search of assets"
     }
 
     def search( ) {
@@ -20,6 +21,7 @@ class AssetController {
             offset = 0
         }
 
+        log.info "Search for ${q}"
         [
             q: q,
             offset: offset,
@@ -29,6 +31,7 @@ class AssetController {
     }
 
     def index() {
+        log.info "Odd. Someone asked for assets counted by letter"
         [
             countsByLetter: assetService.firstLetters( )
         ]
@@ -52,33 +55,19 @@ class AssetController {
             params.offset = offset
             params.max = max
         }
+        log.info "List assets offset ${offset} max ${max}"
         session.pagination = [ offset:offset, max:max ]
+
         [
             assets: Asset.list( max:max, offset:offset, sort:'name' ),
             assetCount: Asset.count(),
             suggestionCount: AssetSuggestion.count()
         ]
     }
-    
-//    def view( ){
-//        Long id = params.long('id')
-//        // We track offset & max for returning to paginated list view
-//        Long offset = params.long('offset')
-//        Integer max = params.int('max')
-//
-//        Asset asset = Asset.get( id )
-//        if( asset ) {
-//            [
-//                asset: asset,
-//                mapLink: assetService.locateOnMap( asset )
-//            ]
-//        } else {
-//            throw new Exception( "Asset ${id} not found")
-//        }
-//    }
-    
+
     def view( ){
         Long id = params.long('id')
+        log.info "View asset ${id}"
         Asset asset = Asset.get( id )
         if( asset ) {
             [
@@ -89,7 +78,7 @@ class AssetController {
             throw new Exception( "Asset ${id} not found")
         }
     }
-    
+
     def save() {
 //        def id = params.long('id')
 //        if( !params.name ) {
