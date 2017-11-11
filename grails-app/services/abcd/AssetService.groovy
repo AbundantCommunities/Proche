@@ -14,16 +14,16 @@ class AssetService {
         Integer count = 0
         assets.each{
             Character thisLetter = it.name.charAt(0)
-            println "Read ${thisLetter}, previous was ${previousLetter}, count is ${count}"
+            log.info "Read ${thisLetter}, previous was ${previousLetter}, count is ${count}"
             if( previousLetter ) {
                 if( thisLetter == previousLetter ) {
-                    println '    nothing new here'
+                    log.info '    nothing new here'
                 } else {
                     result << [ letter: previousLetter, count: count ]
                     count = 0
                 }
             } else {
-                println '    (nothing to compare to)'
+                log.info '    (nothing to compare to)'
             }
             previousLetter = thisLetter
             count++
@@ -35,7 +35,7 @@ class AssetService {
     }
 
     def search( String q, Integer offset ) {
-        println "Asset Svc: search for ${q} offset ${offset}"
+        log.info "Search assets for ${q} offset ${offset}"
         def query = Asset.whereAny {
             name =~ "%${q}%"
             description =~ "%${q}%"
@@ -55,7 +55,7 @@ class AssetService {
                 loc += " NW, Edmonton, AB, Canada"
             }
         }
-        println loc
+        log.info "Created Google Maps link for ${loc}"
         loc = URLEncoder.encode(loc, "UTF-8")
         "https://www.google.ca/maps/place/${loc},+Edmonton,+AB,+Canada"
     }
@@ -73,6 +73,7 @@ class AssetService {
     def update( params ) {
         def id = params.long('id')
         def asset = Asset.get( id )
+        log.info "Update asset ${asset}"
 
         if( asset.version != params.long('version') ) {
             throw new Exception('Stale asset')

@@ -17,8 +17,8 @@
 <body>
     <h1>Search Assets</h1>
     <form action="<g:createLink controller='Asset' action='search'/>" method="POST">
-        <fieldset class="form">
 
+        <fieldset class="form">
             <div class="fieldcontain  required">
                 <label for="q">
                     Search for:
@@ -30,6 +30,7 @@
         <fieldset class="buttons">
             <input type="submit" name="search" value="Search" class="doSearch" />
         </fieldset>
+
     </form>
 </body>
 </html>

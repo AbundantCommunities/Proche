@@ -21,93 +21,89 @@
 
     <body>
         <div id="edit-asset" class="content scaffold-edit" role="main">
-            <h1>Asset Details</h1>
+            <h1>Edit Asset</h1>
 
-            <form action="<g:createLink controller='Asset' action='save'/>" method="POST">
+            <form action="<g:createLink action='save'/>" method="POST">
 
                 <input type="hidden" name="id" value="${asset.id}" />
-                <input type="hidden" name="version" value="${asset.version}" id="version" />
+                <input type="hidden" name="version" value="${asset.version}" />
 
                 <fieldset class="form">
 
                     <div class="fieldcontain  required">
                         <label for="name">
                             Asset Name
+                            <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="name" readonly size="50" required="" value="${asset.name}" id="name" />
+                        <input type="text" name="name" size="50" required="" value="${asset.name}" id="name" />
                     </div>
 
                     <div class="fieldcontain  required">
                         <label for="organization">
                             Organization
+                            <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="organization" readonly size="50" required="" value="${asset.organization}" id="organization" />
+                        <input type="text" name="organization" size="50" required="" value="${asset.organization}" id="organization" />
                     </div>
 
                     <div class="fieldcontain  ">
                         <label for="zeroCost">
                             Free
                         </label>
-                        <g:checkBox name="zeroCost" readonly value="${asset.zeroCost}"/>
+                        <g:checkBox name="zeroCost" value="${asset.zeroCost}"/>
                     </div>
 
                     <div class="fieldcontain  required">
                         <label for="description">
                             Description
+                            <span class="required-indicator">*</span>
                         </label>
-                        <textarea name="description" readonly maxlength="1000" required="" id="description" >${asset.description}</textarea>
+                        <textarea name="description" maxlength="1000" required="" id="description" >${asset.description}</textarea>
                     </div>
 
                     <div class="fieldcontain">
                         <label for="schedule">
                             Schedule
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="schedule" readonly size="70" value="${asset.schedule}" id="schedule" />
+                        <input type="text" name="schedule" size="70" value="${asset.schedule}" id="schedule" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="location">
                             Location
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="location" readonly size="60" value="${asset.location}" id="location" />
-                        <a href="${mapLink}">MAP</a>
+                        <input type="text" name="location" size="70" value="${asset.location}" id="location" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="url">
                             Web Page
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="url" readonly size="70" value="${asset.url}" id="url" />
+                        <input type="text" name="url" size="70" value="${asset.url}" id="url" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="emailAddress">
                             Email Address
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="emailAddress" readonly value="${asset.emailAddress}" id="emailAddress" />
+                        <input type="text" name="emailAddress" value="${asset.emailAddress}" id="emailAddress" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="phoneNumber">
                             Phone Number
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="phoneNumber" readonly value="${asset.phoneNumber}" id="phoneNumber" />
+                        <input type="text" name="phoneNumber" value="${asset.phoneNumber}" id="phoneNumber" />
                     </div>
+                </fieldset>
 
-                    <div class="fieldcontain">
-                        <label for="keywords">
-                            Keywords
-                        </label>
-                        <textarea name="keywords" readonly maxlength="1000" id="keywords" >${asset.keywords}</textarea>
-                    </div>
-
-                    <div class="fieldcontain">
-                        <label for="dateCreated">
-                            Date entered
-                        </label>
-                        <input type="text" name="dateCreated" readonly value="${asset.dateCreated}" id="dateCreated" />
-                    </div>
-
+                <fieldset class="buttons">
+                    <input type="submit" name="button" value="Submit" class="save" />
                 </fieldset>
             </form>
         </div>

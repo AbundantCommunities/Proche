@@ -4,6 +4,7 @@ class AssetController {
 
     //  static allowedMethods = [families:'GET', save:'POST']
     def assetService
+    def authenticateService
 
     def initSearch( ) {
         // I wish I could remember how to specify a URI for our form so that
@@ -21,7 +22,7 @@ class AssetController {
             offset = 0
         }
 
-        log.info "Search for ${q}"
+        log.info "Search for ${q} offset ${offset}"
         [
             q: q,
             offset: offset,
@@ -79,13 +80,29 @@ class AssetController {
         }
     }
 
+    def edit( ){
+        authenticateService.ensurePrivileged( session )
+        Long id = params.long('id')
+        log.info "Edit asset ${id}"
+        Asset asset = Asset.get( id )
+        if( asset ) {
+            [
+                asset: asset,
+                mapLink: assetService.locateOnMap( asset )
+            ]
+        } else {
+            throw new Exception( "Asset ${id} not found")
+        }
+    }
+
     def save() {
-//        def id = params.long('id')
-//        if( !params.name ) {
-//            throw new RuntimeException( "asset.name is empty" )
-//        }
-//
-//        assetService.update( params )
-//        redirect controller:'asset', action:'edit', id:id
+        authenticateService.ensurePrivileged( session )
+        def id = params.long('id')
+        if( !params.name ) {
+            throw new RuntimeException( "asset.name is empty" )
+        }
+
+        assetService.update( params )
+        redirect action:'list'
     }
 }

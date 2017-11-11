@@ -1,22 +1,22 @@
 package abcd
 
 class LoginController {
-//    static allowedMethods = [index:'GET', authenticate:'GET']
+    static allowedMethods = [index:'GET', authenticate:'POST']
 
     def authenticateService
 
     def index( ) {
-        println "WTF login index"
         if( session.user ) {
             log.info( "${session.user} still logged in" )
             redirect controller: 'uberTop'
         } else {
-            session.setMaxInactiveInterval( 6 * 3600 )
+            session.setMaxInactiveInterval( 10 * 3600 )
             log.info "Session timeout set to ${session.getMaxInactiveInterval()} seconds for unauthenticated use"
         }
     }
 
     def logout( ) {
+        log.info "User ${session.user} logging out"
         session.user = null
         redirect action:"index"
     }

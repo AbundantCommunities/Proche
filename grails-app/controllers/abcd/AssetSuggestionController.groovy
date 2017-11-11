@@ -35,12 +35,12 @@ class AssetSuggestionController {
     }
 
     def emptyForm(){
-        // nothing to do here; we'll just present an empty form to the user.
+        log.info "Empty suggested asset form"
     }
 
     def saveOffer() {
         def recaptchaResponse = params.'g-recaptcha-response'
-        println "GOOGLE RECAPTCH RESPONSE = ${recaptchaResponse}"
+        log.info "GOOGLE RECAPTCH RESPONSE = ${recaptchaResponse}"
 
         if( !params.name ) {
             throw new RuntimeException( "assetSuggestion.name is empty" )
@@ -56,7 +56,6 @@ class AssetSuggestionController {
     def save() {
         def id = params.long('id')
         String button = params.button
-        println "Button is ${button}"
         if( !params.name ) {
             throw new RuntimeException( "assetSuggestion.name is empty" )
         }
@@ -68,7 +67,7 @@ class AssetSuggestionController {
                 break
 
             case 'Accept':
-                println "User wants to accept ${params}"
+                log.info "User wants to accept ${params}"
                 assetSuggestionService.accept( params )
                 redirect action:'list'
                 break
