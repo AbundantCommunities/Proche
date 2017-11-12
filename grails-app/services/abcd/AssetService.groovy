@@ -89,10 +89,10 @@ class AssetService {
         asset.url = params.url
         asset.schedule = params.schedule
         if( params.keywords ) {
-            println "keywords not null; size is ${params.keywords.size()}"
+            log.info "Keywords not null; size is ${params.keywords.size()}"
             asset.keywords = params.keywords
         } else {
-            println "keywords is null"
+            log.info "keywords is null"
         }
 
         asset.save( flush:true, failOnError: true )

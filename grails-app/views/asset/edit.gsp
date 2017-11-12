@@ -58,7 +58,15 @@
                             Description
                             <span class="required-indicator">*</span>
                         </label>
-                        <textarea name="description" maxlength="1000" required="" id="description" >${asset.description}</textarea>
+                        <textarea name="description" maxlength="500" required="" id="description" >${asset.description}</textarea>
+                    </div>
+
+                    <div class="fieldcontain">
+                        <label for="keywords">
+                            Keywords
+                            <span class="required-indicator">&nbsp;</span>
+                        </label>
+                        <textarea name="keywords" maxlength="300" id="keywords" >${asset.keywords}</textarea>
                     </div>
 
                     <div class="fieldcontain">
