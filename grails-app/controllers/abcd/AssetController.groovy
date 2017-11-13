@@ -85,6 +85,7 @@ class AssetController {
         Long id = params.long('id')
         log.info "Edit asset ${id}"
         Asset asset = Asset.get( id )
+        log.info "Edit of ${asset} requested"
         if( asset ) {
             [
                 asset: asset,
@@ -102,6 +103,7 @@ class AssetController {
             throw new RuntimeException( "asset.name is empty" )
         }
 
+        log.info "Save of asset ${id} requested"
         assetService.update( params )
         redirect action:'list'
     }

@@ -20,7 +20,7 @@
 
     <body>
         <div id="edit-assetSuggestion" class="content scaffold-edit" role="main">
-            <h1>Asset Suggestion (<a href="https://public.3.basecamp.com/p/qB5JKpEC5Yts3Tjk6L38wHnK" target="_blank">Help</a>)</h1>
+            <h1>Suggest a New Asset (<a href="https://public.3.basecamp.com/p/qB5JKpEC5Yts3Tjk6L38wHnK" target="_blank">Help</a>)</h1>
 
             <form action="<g:createLink controller='AssetSuggestion' action='saveOffer'/>" method="POST">
 
