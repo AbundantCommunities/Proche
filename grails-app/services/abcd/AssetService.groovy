@@ -43,23 +43,6 @@ class AssetService {
         query.list( [sort: 'name', offset: offset, max: 10000] )
     }
 
-    String locateOnMap( Asset asset ) {
-        String loc = asset.location
-        if( loc.endsWith("NW") ) {
-            loc += ", Edmonton, AB, Canada"
-        } else {
-            def tail = loc.indexOf(" NW,")
-            if( tail > 0 ) {
-                loc = loc.substring( 0, tail ) + " NW, Edmonton, AB, Canada"
-            } else {
-                loc += " NW, Edmonton, AB, Canada"
-            }
-        }
-        log.info "Created Google Maps link for ${loc}"
-        loc = URLEncoder.encode(loc, "UTF-8")
-        "https://www.google.ca/maps/place/${loc},+Edmonton,+AB,+Canada"
-    }
-
     def byFirstLetter( firstLetter ) {
         def nextLetter = 'C'
         def query = Asset.where {

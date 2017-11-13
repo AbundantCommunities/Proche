@@ -64,7 +64,7 @@
                         <label for="location">
                             Location
                         </label>
-                        <input type="text" name="location" readonly size="60" value="${asset.location}" id="location" />
+                        <input type="text" name="location" readonly size="70" value="${asset.location}" id="location" />
                         <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
@@ -73,6 +73,7 @@
                             Web Page
                         </label>
                         <input type="text" name="url" readonly size="70" value="${asset.url}" id="url" />
+                        <a href="${asset.url}" target="_blank">View</a>
                     </div>
 
                     <div class="fieldcontain">

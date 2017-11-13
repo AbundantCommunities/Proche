@@ -83,6 +83,7 @@
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="location" size="70" value="${asset.location}" id="location" />
+                        <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
                     <div class="fieldcontain">
@@ -91,6 +92,7 @@
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="url" size="70" value="${asset.url}" id="url" />
+                        <a href="${asset.url}" target="_blank">View</a>
                     </div>
 
                     <div class="fieldcontain">

@@ -32,6 +32,10 @@ class AssetSuggestion {
         keywords maxSize: 1000
     }
 
+    String toString( ) {
+        "SuggestedAsset ${id} name ${name} loc ${location}"
+    }
+
     // FIXME same method is in Asset domain class
     def getShortDescription( ) {
         if( description.size() <= 160 ) {
