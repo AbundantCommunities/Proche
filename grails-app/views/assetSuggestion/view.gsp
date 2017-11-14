@@ -45,7 +45,7 @@
                         <label for="zeroCost">
                             Free
                         </label>
-                        <g:checkBox name="zeroCost" value=""/>
+                        <g:checkBox name="zeroCost" value="${sug.zeroCost}"/>
                     </div>
 
                     <div class="fieldcontain  required">
@@ -61,7 +61,7 @@
                             Schedule
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="schedule" size="70" value="" id="schedule" />
+                        <input type="text" name="schedule" size="70" value="${sug.schedule}" id="schedule" />
                     </div>
 
                     <div class="fieldcontain">
@@ -69,7 +69,7 @@
                             Location
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="location" size="70" value="" id="location" />
+                        <input type="text" name="location" size="70" value="${sug.location}" id="location" />
                         <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
@@ -78,7 +78,8 @@
                             Web Page
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="url" size="70" value="" id="url" />
+                        <input type="text" name="url" size="70" value="${sug.url}" id="url" />
+                        <a href="${sug.url}" target="_blank">View</a>
                     </div>
 
                     <div class="fieldcontain">
@@ -86,7 +87,7 @@
                             Email Address
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="emailAddress" value="" id="emailAddress" />
+                        <input type="text" name="emailAddress" value="${sug.emailAddress}" id="emailAddress" />
                     </div>
 
                     <div class="fieldcontain">
@@ -94,7 +95,7 @@
                             Phone Number
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="phoneNumber" value="" id="phoneNumber" />
+                        <input type="text" name="phoneNumber" value="${sug.phoneNumber}" id="phoneNumber" />
                     </div>
 
                     <div class="fieldcontain">
@@ -102,7 +103,7 @@
                             YOUR Name
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="suggesterName" value="" id="suggesterName" />
+                        <input type="text" name="suggesterName" value="${sug.suggesterName}" id="suggesterName" />
                     </div>
 
                     <div class="fieldcontain">
@@ -110,7 +111,7 @@
                             YOUR Contact Info
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="suggesterContactInfo" value="" id="suggesterContactInfo" />
+                        <input type="text" name="suggesterContactInfo" value="${sug.suggesterContactInfo}" id="suggesterContactInfo" />
                     </div>
 
                     <div class="fieldcontain">
@@ -118,7 +119,7 @@
                             YOUR Comments
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <textarea name="suggesterComment" id="suggesterComment" ></textarea>
+                        <textarea name="suggesterComment" id="suggesterComment" >${sug.suggesterComment}</textarea>
                     </div>
                 </fieldset>
             </form>

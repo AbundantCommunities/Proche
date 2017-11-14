@@ -50,7 +50,7 @@ class AssetService {
             name < nextLetter
         }
         def result = query.findAll( )
-        println "Found ${result.size()} assets starting with ${firstLetter}"
+        log.info "Found ${result.size()} assets starting with ${firstLetter}"
     }
 
     def update( params ) {

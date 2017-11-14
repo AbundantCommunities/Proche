@@ -10,7 +10,7 @@ class AssetSuggestionService {
      */
     def saveOffer( params ) {
         def recaptcha = params['g-recaptcha-response']
-        println "GOOGLE RECAPTCH RESPONSE = ${recaptcha}"
+        log.info "GOOGLE RECAPTCH RESPONSE = ${recaptcha}"
 
         def sug = new AssetSuggestion( )
 
@@ -64,7 +64,7 @@ class AssetSuggestionService {
      * Administrator asks that we promote a suggested asset into a public facing asset.
      */
     def promote( params ) {
-        println "Promoting suggestion id ${params.id}"
+        log.info "Promoting suggestion id ${params.id}"
 
         AssetSuggestion sug = AssetSuggestion.get( params.long('id') )
         sug.resolution = 'A'

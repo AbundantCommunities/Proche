@@ -4,6 +4,7 @@ class AssetController {
 
     //  static allowedMethods = [families:'GET', save:'POST']
     def assetService
+    def mapService
     def authenticateService
 
     def initSearch( ) {
@@ -89,7 +90,7 @@ class AssetController {
         if( asset ) {
             [
                 asset: asset,
-                mapLink: assetService.locateOnMap( asset )
+                mapLink: mapService.locateOnMap( asset.location )
             ]
         } else {
             throw new Exception( "Asset ${id} not found")
