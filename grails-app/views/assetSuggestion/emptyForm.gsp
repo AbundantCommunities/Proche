@@ -31,7 +31,7 @@
                             Asset Name
                             <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="name" size="50" required="" value="" id="name" />
+                            <input type="text" name="name" size="50" autofocus="yup" required="" value="" id="name" />
                     </div>
 
                     <div class="fieldcontain  required">

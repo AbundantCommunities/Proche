@@ -55,8 +55,8 @@
     </head>
 
     <body>
-        <g:if test="${suggestionCount>0}">
-            <p>(We have ${suggestionCount} suggestion(s) waiting for approval; they will not be listed)</p>
+        <g:if test="${suggestionCount}">
+            <p>&nbsp;<em>${suggestionCount} suggestion(s) are waiting for approval; they will not be listed.</em></p>
         </g:if>
 
         <table>

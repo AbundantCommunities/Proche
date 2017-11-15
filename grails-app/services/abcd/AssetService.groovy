@@ -39,6 +39,9 @@ class AssetService {
         def query = Asset.whereAny {
             name =~ "%${q}%"
             description =~ "%${q}%"
+            organization =~ "%${q}%"
+            location =~ "%${q}%"
+            keywords =~ "%${q}%"
         }
         query.list( [sort: 'name', offset: offset, max: 10000] )
     }

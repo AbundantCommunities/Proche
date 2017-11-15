@@ -23,7 +23,7 @@
                 <label for="q">
                     Search for:
                 </label>
-                <input type="text" name="q" size="50" required value="" id="q" />
+                <input type="text" name="q" size="50" autofocus="yup" required value="" id="q" />
             </div>
         </fieldset>
 
