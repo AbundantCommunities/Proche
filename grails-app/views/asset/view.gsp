@@ -21,7 +21,7 @@
 
     <body>
         <div id="edit-asset" class="content scaffold-edit" role="main">
-            <h1>Asset Details</h1>
+            <h1>Asset Details <a href="<g:createLink action='comment' id='${asset.id}' />">Comment</a></h1>
 
             <form>
                 <fieldset class="form">

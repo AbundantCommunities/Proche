@@ -7,6 +7,28 @@ class AssetController {
     def mapService
     def authenticateService
 
+    def comment( ) {
+        log.info "Enter comment for a public asset ${params}"
+        def asset = Asset.get( params.long('id') )
+        [
+            asset: asset
+        ]
+    }
+
+    def saveComment( ) {
+        log.info "Save comment on public asset"
+        Asset asset = Asset.get( params.long('id') )
+        Comment comment = new Comment( )
+        comment.asset = asset
+        comment.submitterName = params.submitterName
+        comment.submitterContactInfo = params.submitterContactInfo
+        comment.says = params.says
+        comment.save( flush:true, failOnError: true )
+        flash.message = "Thanks for your comment"
+        flash.nature = 'SUCCESS'
+        redirect action:'view', id:asset.id
+    }
+
     def initSearch( ) {
         // I wish I could remember how to specify a URI for our form so that
         // this closure is not required!
@@ -86,7 +108,6 @@ class AssetController {
         Long id = params.long('id')
         log.info "Edit asset ${id}"
         Asset asset = Asset.get( id )
-        log.info "Edit of ${asset} requested"
         if( asset ) {
             [
                 asset: asset,

@@ -3,20 +3,20 @@ package abcd
 class Comment {
 
     Asset asset
-    String name
-    String contactInfo
+    String submitterName
+    String submitterContactInfo
     String says
 
     Date dateCreated
     Date lastUpdated
 
     static constraints = {
-        name maxSize: 40
-        contactInfo maxSize: 60
+        submitterName maxSize: 50
+        submitterContactInfo maxSize: 70
         says maxSize: 2000
     }
 
     String toString( ) {
-        "Comment ${id} name ${name} ${says}"
+        "Comment ${id} name ${submitterName} ${says}"
     }
 }
