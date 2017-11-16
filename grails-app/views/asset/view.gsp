@@ -21,10 +21,12 @@
 
     <body>
         <div id="edit-asset" class="content scaffold-edit" role="main">
-            <h1>Asset Details <a href="<g:createLink action='comment' id='${asset.id}' />">Comment</a></h1>
+            <h1>Asset Details</h1>
 
             <form>
                 <fieldset class="form">
+                    <div><a href="<g:createLink action='comment' id='${asset.id}' />">Comment on this asset</a></div>
+    
                     <div class="fieldcontain">
                         <label for="name">
                             Asset Name

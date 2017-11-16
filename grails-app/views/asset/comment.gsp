@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div id="edit-asset" class="content scaffold-edit" role="main">
     <h1>Comment</h1>
     <form action="<g:createLink action='saveComment'/>" method="POST">
 
@@ -82,5 +83,6 @@
             <input type="submit" name="button" value="Submit" class="save" />
         </fieldset>
     </form>
+    </div>
 </body>
 </html>

@@ -23,8 +23,13 @@
     <br/>
     <p>
         We have ${assetCount} assets on file so far.
-        Use the links above to have a look at them
-        or to suggest an asset we don't have.
+        Use the links above to have a look at them or to suggest an asset we don't have.
+    </p>
+    <br/>
+    <p>
+        Please write to Mark at
+        <a href="mailto:mark@cognish.com?Subject=Communities%20United%20Database">mark@cognish.com</a>
+        with questions, ideas, comments, favourite recipes, ...
     </p>
 </body>
 </html>
