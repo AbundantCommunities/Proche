@@ -18,7 +18,7 @@
     </p>
     <br/>
     <g:if test="${suggestionCount>0}">
-        <p><em>We have ${suggestionCount} suggestion(s) waiting for approval.</em></p>
+        <p>We have <em>${suggestionCount} suggestion(s)</em> and <em>${commentCount} comment(s)</em> waiting in our in-basket.</p>
     </g:if>
     <br/>
     <p>

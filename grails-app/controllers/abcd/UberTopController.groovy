@@ -6,7 +6,8 @@ class UberTopController {
         log.info "Topmost menu for user ${session.user}"
         [
             assetCount: Asset.count(),
-            suggestionCount: AssetSuggestion.count()
+            suggestionCount: AssetSuggestion.count(),
+            commentCount: Comment.count()
         ]
     }
 }

@@ -1,7 +1,7 @@
 package abcd
 /**
  * A MinorAssetClass can belong to zero or more MajorAssetClass(es).
- * A MajorAssetClass can own zero or one of each MinorAssetClass.
+ * A MajorAssetClass can own zero or one of EACH MinorAssetClass.
  */
 class AssetClassHierarchy {
     MajorAssetClass majorAssetClass

@@ -78,6 +78,3 @@ INSERT INTO asset_class_hierarchy( id, version, major_asset_class_id, minor_asse
 INSERT INTO asset_class_hierarchy( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 54, 0, 5, 54, 54, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO asset_class_hierarchy( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 55, 0, 5, 55, 55, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO asset_class_hierarchy( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 56, 0, 5, 56, 56, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
-
-INSERT INTO organization( id, version, name, date_created, last_updated ) VALUES ( 1, 0, 'Neighbour Support Team', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
-INSERT INTO venue( id, version, virtual, name, address, latitude, longitude, date_created, last_updated ) VALUES( 1, 0, true, 'The Intertubes', 'No fixed address', 12345, 12345, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );

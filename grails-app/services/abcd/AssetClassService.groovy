@@ -53,39 +53,4 @@ class AssetClassService {
         }
         return result
     }
-
-    def getHierarchy( )
-    {
-        def hierarchy = AssetClassHierarchy.findAll(
-                'from AssetClassHierarchy ach order by ach.majorAssetClass.sortOrder, ach.sortOrder'
-        )
-
-        println "Found ${hierarchy.size()} AssetClassHierarchy rows"
-        MajorAssetClass lastMajor = null
-        def majors = [ ]
-        def minors
-        hierarchy.each{
-            if( lastMajor ) {
-                if( lastMajor != it.majorAssetClass ) {
-                    // We have encountered a change in major class
-                    // push out the previous major class
-                    println "Begin ${it.majorAssetClass}"
-                    minors = [ ]
-                    majors << ['major':it.majorAssetClass,'minors':minors]
-                    lastMajor = it.majorAssetClass
-                } else {
-                    // Current row has same major as lastMajor
-                    println "    ${it.minorAssetClass}"
-                }
-            } else {
-                println "Begin ${it.majorAssetClass}"
-                minors = [ ]
-                majors << ['major':it.majorAssetClass,'minors':minors]
-                lastMajor = it.majorAssetClass
-            }
-            minors << it.minorAssetClass
-        }
-        println "No more data"
-        return majors
-    }
 }

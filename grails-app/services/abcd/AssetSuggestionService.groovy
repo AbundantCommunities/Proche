@@ -22,7 +22,7 @@ class AssetSuggestionService {
         sug.phoneNumber = params.phoneNumber
         sug.emailAddress = params.emailAddress
         sug.url = params.url
-        sug.schedule = params.schedule
+        sug.schedule = 'N/A'
         sug.suggesterComment = params.suggesterComment
         sug.suggesterContactInfo = params.suggesterContactInfo
         sug.suggesterName = params.suggesterName

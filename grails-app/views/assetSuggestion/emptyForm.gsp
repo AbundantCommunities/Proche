@@ -58,14 +58,6 @@
                     </div>
 
                     <div class="fieldcontain">
-                        <label for="schedule">
-                            Schedule
-                            <span class="required-indicator">&nbsp;</span>
-                        </label>
-                        <input type="text" name="schedule" size="70" value="" id="schedule" />
-                    </div>
-
-                    <div class="fieldcontain">
                         <label for="location">
                             Location
                             <span class="required-indicator">&nbsp;</span>
