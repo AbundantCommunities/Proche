@@ -20,9 +20,13 @@
 
     <body>
         <div id="edit-assetSuggestion" class="content scaffold-edit" role="main">
-            <h1>View Suggested Asset</h1>
+            <h1>Edit Suggested Asset</h1>
 
-            <form>
+            <form action="<g:createLink action='save'/>" method="POST">
+
+                <input type="hidden" name="id" value="${sug.id}" />
+                <input type="hidden" name="version" value="${sug.version}" />
+
                 <fieldset class="form">
 
                     <div class="fieldcontain  required">
@@ -56,12 +60,12 @@
                         <textarea name="description" maxlength="1000" required="" id="description" >${sug.description}</textarea>
                     </div>
 
-                    <div class="fieldcontain">
+                    <div class="fieldcontain required">
                         <label for="location">
                             Location
-                            <span class="required-indicator">&nbsp;</span>
+                            <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="location" size="70" value="${sug.location}" id="location" />
+                        <input type="text" name="location" required="" size="70" value="${sug.location}" id="location" />
                         <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
@@ -113,6 +117,12 @@
                         </label>
                         <textarea name="suggesterComment" id="suggesterComment" >${sug.suggesterComment}</textarea>
                     </div>
+                </fieldset>
+
+                <fieldset class="buttons">
+                    <input type="submit" name="button" value="Update" class="save" />
+                    <input type="submit" name="button" value="Accept" class="accept" />
+                    <input type="submit" name="button" value="Reject" class="reject" />
                 </fieldset>
             </form>
         </div>

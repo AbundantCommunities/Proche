@@ -73,7 +73,7 @@ class AssetService {
         asset.phoneNumber = params.phoneNumber
         asset.emailAddress = params.emailAddress
         asset.url = params.url
-        asset.schedule = params.schedule
+        asset.schedule = 'N/A'
         if( params.keywords ) {
             log.info "Keywords not null; size is ${params.keywords.size()}"
             asset.keywords = params.keywords

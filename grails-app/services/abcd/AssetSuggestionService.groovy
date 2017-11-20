@@ -6,6 +6,13 @@ import grails.transaction.Transactional
 class AssetSuggestionService {
 
     /**
+     * How many suggestions are waiting to be resolved?
+     */
+    def countUnresolved( ) {
+        AssetSuggestion.countByResolution( AssetSuggestion.UNRESOLVED )
+    }
+
+    /**
      * Anonymous user offers a suggested asset. We use Google's reCaptcha.
      */
     def saveOffer( params ) {
@@ -27,7 +34,7 @@ class AssetSuggestionService {
         sug.suggesterContactInfo = params.suggesterContactInfo
         sug.suggesterName = params.suggesterName
 
-        sug.resolution = 'N'
+        sug.resolution = AssetSuggestion.UNRESOLVED
         sug.administratorComment = 'admin comment'
         sug.keywords = 'keywords'
 
@@ -38,42 +45,73 @@ class AssetSuggestionService {
      * Administrator has modified a suggestion but is not ready to promote it.
      */
     def update( params ) {
-        def id = params.long('id')
-        def sug = AssetSuggestion.get( id )
+        AssetSuggestion sug = AssetSuggestion.get( params.long('id') )
+        log.info "Update (neither Accept nor Reject) ${sug}"
 
         if( sug.version != params.long('version') ) {
             throw new Exception('Stale suggested asset')
         }
 
-        sug.name = params.name
-        sug.description = params.description
-        sug.organization = params.organization
-        sug.location = params.location
-        sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
-        sug.phoneNumber = params.phoneNumber
-        sug.emailAddress = params.emailAddress
-        sug.url = params.url
-        sug.schedule = params.schedule
-        sug.administratorComment = params.administratorComment 
-        sug.keywords = params.keywords
+// sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
+
+        // Keep alphabetical order so that we can easily desk-check what parameters we ALLOW to be copied.
+        sug.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
+                'name', 'organization', 'phoneNumber', 'schedule', 'suggesterComment', 'suggesterContactInfo',
+                'suggesterName', 'url', 'zeroCost'] = params
 
         sug.save( flush:true, failOnError: true )
     }
 
     /**
-     * Administrator asks that we promote a suggested asset into a public facing asset.
+     * Promote a suggested asset into a public facing asset.
      */
-    def promote( params ) {
-        log.info "Promoting suggestion id ${params.id}"
-
+    def accept( params ) {
         AssetSuggestion sug = AssetSuggestion.get( params.long('id') )
-        sug.resolution = 'A'
+        log.info "Accept ${sug}"
+
+        if( sug.version != params.long('version') ) {
+            throw new Exception('Stale suggested asset')
+        }
+
+// sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
+
+        // Keep alphabetical order so that we can easily desk-check what parameters we ALLOW to be copied.
+        sug.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
+                'name', 'organization', 'phoneNumber', 'schedule', 'suggesterComment', 'suggesterContactInfo',
+                'suggesterName', 'url', 'zeroCost'] = params
+
+        sug.resolution = AssetSuggestion.ACCEPTED
         sug.save( failOnError:true, flush:true )
 
         Asset asset = new Asset( )
-        asset.properties[ 'name', 'zeroCost', 'description', 'organization', 'location',
-                'phoneNumber', 'emailAddress', 'url', 'schedule', 'keywords'] = params
+
+// sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
+
+        // Keep alphabetical order so that we can easily desk-check what parameters we ALLOW to be copied.
+        asset.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
+                'name', 'organization', 'phoneNumber', 'schedule', 'url', 'zeroCost'] = params
 
         asset.save( failOnError:true, flush:true )
+    }
+
+    /**
+     * Promote a suggested asset into a public facing asset.
+     */
+    def reject( params ) {
+        AssetSuggestion sug = AssetSuggestion.get( params.long('id') )
+        log.info "Reject ${sug}"
+
+        if( sug.version != params.long('version') ) {
+            throw new Exception('Stale suggested asset')
+        }
+
+// sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
+
+        sug.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
+                'name', 'organization', 'phoneNumber', 'schedule', 'suggesterComment', 'suggesterContactInfo',
+                'suggesterName', 'url', 'zeroCost'] = params
+
+        sug.resolution = AssetSuggestion.REJECTED
+        sug.save( failOnError:true, flush:true )
     }
 }

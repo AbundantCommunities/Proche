@@ -24,6 +24,7 @@
             <li><a class="search" href="${createLink(uri: '/asset/initSearch')}">Search</a></li>
             <li><a class="suggest" href="${createLink(uri: '/assetSuggestion/emptyForm')}">Suggest</a></li>
             <g:if test="${session.user}">
+                <li><a class="suggestions" href="${createLink(uri: '/assetSuggestion')}">Suggestions</a></li>
                 <li><a class="logout" href="${createLink(uri: '/login/logout')}">Logout</a></li>
             </g:if>
         </ul>
@@ -50,7 +51,7 @@
 
     <g:layoutBody/>
 
-    <div class="footer" role="contentinfo"></div>
+    <div class="footer" role="contentinfo">Proche version <g:meta name="app.version"/></div>
     <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
     <r:layoutResources />
 </body>

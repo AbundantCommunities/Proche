@@ -6,6 +6,7 @@ class AssetController {
     def assetService
     def mapService
     def authenticateService
+    def assetSuggestionService
 
     def comment( ) {
         log.info "Enter comment for a public asset ${params}"
@@ -50,7 +51,7 @@ class AssetController {
             q: q,
             offset: offset,
             assets: assetService.search( q, offset ),
-            suggestionCount: AssetSuggestion.count()
+            suggestionCount: assetSuggestionService.countUnresolved( )
         ]
     }
 
@@ -84,8 +85,8 @@ class AssetController {
 
         [
             assets: Asset.list( max:max, offset:offset, sort:'name' ),
-            assetCount: Asset.count(),
-            suggestionCount: AssetSuggestion.count()
+            assetCount: Asset.count( ),
+            suggestionCount: assetSuggestionService.countUnresolved( )
         ]
     }
 

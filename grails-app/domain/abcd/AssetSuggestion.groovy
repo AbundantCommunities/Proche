@@ -1,7 +1,11 @@
 package abcd
 
 class AssetSuggestion {
-    String resolution  // 1st letter in New, Accepted, Rejected
+    static final String UNRESOLVED = "Unresolved"
+    static final String ACCEPTED = "Accepted"
+    static final String REJECTED = "Rejected"
+    String resolution  // Unresolved, Accepted, Rejected
+
     String suggesterName
     String suggesterContactInfo
     String suggesterComment
@@ -32,8 +36,12 @@ class AssetSuggestion {
         keywords maxSize: 1000
     }
 
+    Boolean isQueued( ) {
+        resolution.equals( UNRESOLVED )
+    }
+
     String toString( ) {
-        "SuggestedAsset ${id} name ${name} loc ${location}"
+        "SuggestedAsset ${id} ${resolution} name ${name} loc ${location}"
     }
 
     // FIXME same method is in Asset domain class

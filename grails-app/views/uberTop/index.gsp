@@ -12,14 +12,12 @@
     <h1>&nbsp;Public Assets for Residents of Bannerman, Clareview Campus, Fraser, Hairsine & Kirkness.</h1>
     <br/>
     <p>
-        This website is not ready for general use.
+        This website is not ready for general use!
         We are building up a list of public assets that anyone can take advantage of.
         [What are <a href="https://en.wikipedia.org/wiki/Asset-based_community_development" target="_blank">public assets</a>?]
     </p>
     <br/>
-    <g:if test="${suggestionCount>0}">
-        <p>We have <em>${suggestionCount} suggestion(s)</em> and <em>${commentCount} comment(s)</em> waiting in our in-basket.</p>
-    </g:if>
+    <p>We have <em>${suggestionCount} suggestion(s)</em> and <em>${commentCount} comment(s)</em> waiting in our in-basket.</p>
     <br/>
     <p>
         We have ${assetCount} assets on file so far.

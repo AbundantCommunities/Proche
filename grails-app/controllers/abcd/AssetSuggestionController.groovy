@@ -8,20 +8,9 @@ class AssetSuggestionController {
     def authenticateService
 
     /**
-     * We summarize the suggestions we have on file and offer a link
-     * to see the unresolved ones (so that we can make them publicly visible).
+     * List the UNRESOLVED suggested assets.
      */
     def index() {
-        authenticateService.ensurePrivileged( session )
-        [
-            all: AssetSuggestion.count( ),
-            fresh: AssetSuggestion.countByResolution('N'),
-            accepted: AssetSuggestion.countByResolution('A'),
-            rejected: AssetSuggestion.countByResolution('R')
-        ]
-    }
-
-    def list() {
         authenticateService.ensurePrivileged( session )
         Long offset
         Integer max
@@ -33,8 +22,7 @@ class AssetSuggestionController {
             max = params.int('max')
         }
         [
-            sugs: AssetSuggestion.findAllByResolution( 'N',  [max:max, offset:offset, sort:'name'] ),
-            sugCount: AssetSuggestion.count()
+            sugs: AssetSuggestion.findAllByResolution( AssetSuggestion.UNRESOLVED,  [max:max, offset:offset, sort:'name'] ),
         ]
     }
 
@@ -42,21 +30,19 @@ class AssetSuggestionController {
         log.info "Empty suggested asset form"
     }
 
-    def view( ){
+    def edit( ) {
         authenticateService.ensurePrivileged( session )
-        Long id = params.long('id')
-        AssetSuggestion sug = AssetSuggestion.get( id )
-        log.info "View ${sug}"
-        if( sug ) {
-            [
-                sug: sug,
-                mapLink: mapService.locateOnMap( sug.location )
-            ]
-        } else {
-            throw new Exception( "Suggested Asset ${id} not found")
-        }
+        AssetSuggestion sug = AssetSuggestion.get( params.long('id') )
+        log.info "Edit sug"
+        [
+            sug: sug,
+            mapLink: mapService.locateOnMap( sug.location )
+        ]
     }
 
+    /**
+     * Anonymous user submits a Suggested Public Asset
+     */
     def saveOffer() {
         def recaptchaResponse = params.'g-recaptcha-response'
         log.info "GOOGLE RECAPTCH RESPONSE = ${recaptchaResponse}"
@@ -72,6 +58,9 @@ class AssetSuggestionController {
         redirect controller:'uberTop'
     }
 
+    /**
+     * Authenticated user updates a suggestion (may be resolved)
+     */
     def save() {
         authenticateService.ensurePrivileged( session )
         def id = params.long('id')
@@ -80,21 +69,26 @@ class AssetSuggestionController {
             throw new RuntimeException( "assetSuggestion.name is empty" )
         }
 
+        params.schedule = 'N/A'
+        params.keywords = params.keywords? params.keywords : 'N/A'
+
         switch( button ) {
             case 'Update':
+                log.info "Update ${params}"
                 assetSuggestionService.update( params )
-                redirect action:'seeOne', id:id
+                redirect action:'index'
                 break
 
             case 'Accept':
-                log.info "User wants to accept ${params}"
+                log.info "Accept ${params}"
                 assetSuggestionService.accept( params )
-                redirect action:'list'
+                redirect action:'index'
                 break
 
             case 'Reject':
+                log.info "Reject ${params}"
                 assetSuggestionService.reject( params )
-                redirect controller:'asset', action:'index'
+                redirect action:'index'
                 break
 
             default:

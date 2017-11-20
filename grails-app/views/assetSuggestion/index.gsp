@@ -70,8 +70,5 @@
             </tr>
         </g:each>
         </table>
-        <br/>
-        &nbsp;&nbsp;&nbsp;
-        <g:paginate total="${sugCount}" max="5", maxsteps="4", omitFirst="true", omitLast="true" />
     </body>
 </html>
