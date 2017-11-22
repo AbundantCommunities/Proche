@@ -22,40 +22,40 @@
 
 <body>
         <div id="edit-asset" class="content scaffold-edit" role="main">
-            <h1>Major Asset Class</h1>
+            <h1>Minor Asset Class</h1>
 
-            <form action="<g:createLink action='saveMajor'/>" method="POST">
+            <form action="<g:createLink action='saveMinor'/>" method="POST">
 
-                <input type="hidden" name="id" value="${major.id}" />
-                <input type="hidden" name="version" value="${major.version}" />
+                <input type="hidden" name="id" value="${minor.id}" />
+                <input type="hidden" name="version" value="${minor.version}" />
 
                 <fieldset class="form">
                     <div class="fieldcontain">
                         <label for="name">
                             Name
                         </label>
-                        <input type="text" name="name" size="50" value="${major.name}" id="name" />
+                        <input type="text" name="name" size="50" value="${minor.name}" id="name" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="description">
                             Description
                         </label>
-                        <textarea name="description" maxlength="1000" id="description" >${major.description}</textarea>
+                        <textarea name="description" maxlength="1000" id="description" >${minor.description}</textarea>
                     </div>
 
                     <div class="fieldcontain">
                         <label for="keywords">
                             Keywords
                         </label>
-                        <textarea name="keywords" maxlength="1000" id="keywords" >${major.keywords}</textarea>
+                        <textarea name="keywords" maxlength="1000" id="keywords" >${minor.keywords}</textarea>
                     </div>
 
                     <div class="fieldcontain">
                         <label for="lastUpdated">
                             Last Updated
                         </label>
-                        <input type="text" name="lastUpdated" readonly value="${major.lastUpdated}" id="lastUpdated" />
+                        <input type="text" name="lastUpdated" readonly value="${minor.lastUpdated}" id="lastUpdated" />
                     </div>
                 </fieldset>
 

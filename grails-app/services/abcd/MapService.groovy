@@ -19,6 +19,6 @@ class MapService {
         }
         log.info "Created Google Maps link for ${loc}"
         loc = URLEncoder.encode(loc, "UTF-8")
-        "https://www.google.ca/maps/place/${loc},+Edmonton,+AB,+Canada"
+        return "https://www.google.ca/maps/place/${loc}"
     }
 }

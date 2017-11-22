@@ -3,27 +3,52 @@ package abcd
 class HoneycombController {
 
     def honeycombService
+    def authenticateService
 
-    def hierarchy( ) {
-        def hierarchy = honeycombService.getHierarchy( )
-        log.info "HoneycombService's getHierarchy returned ${hierarchy}"
-        return [hierarchy: hierarchy]
+    def index( ) {
+        log.info "Show the Honeycomb"
+        [
+            hierarchy: honeycombService.getHierarchy( )
+        ]
     }
 
     def major( ) {
-        log.info "Get list of majors"
+        Long majorId = params.long( 'id' )
+        log.info "Edit MajorAssetClass ${majorId}"
         [
-            majors: honeycombService.getMajors( )
+            major: honeycombService.getMajor( majorId )
         ]
     }
 
-    def minorsForMajor( ) {
-        Long majorId = params.long('id')
-        log.info "Get minors for major id ${majorId}"
-        def ( MajorAssetClass major, AssetClassHierarchy[] nodes ) = honeycombService.getMinors( majorId )
+    def minor( ) {
+        Long minorId = params.long( 'id' )
+        log.info "Edit MinorAssetClass ${minorId}"
         [
-            major: major,
-            nodes: nodes
+            minor: honeycombService.getMinor( minorId )
         ]
+    }
+
+    def saveMajor( ) {
+        authenticateService.ensurePrivileged( session )
+        def id = params.long('id')
+        if( !params.name ) {
+            throw new RuntimeException( "MajorAssetClass name is empty" )
+        }
+
+        log.info "Save MajorAssetClass ${id}"
+        honeycombService.saveMajor( params )
+        redirect action:"index"
+    }
+
+    def saveMinor( ) {
+        authenticateService.ensurePrivileged( session )
+        def id = params.long('id')
+        if( !params.name ) {
+            throw new RuntimeException( "MinorAssetClass name is empty" )
+        }
+
+        log.info "Save MinorAssetClass ${id}"
+        honeycombService.saveMinor( params )
+        redirect action:"index"
     }
 }
