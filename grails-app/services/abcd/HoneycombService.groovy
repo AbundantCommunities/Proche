@@ -7,10 +7,10 @@ class HoneycombService {
 
     def getHierarchy( )
     {
-        def hierarchy = AssetClassHierarchy.findAll(
-                'from AssetClassHierarchy ach order by ach.majorAssetClass.sortOrder, ach.sortOrder'
+        def hierarchy = HoneyNode.findAll(
+                'from HoneyNode hn order by hn.majorAssetClass.sortOrder, hn.sortOrder'
         )
-        log.info "Found ${hierarchy.size()} AssetClassHierarchy rows"
+        log.info "Found ${hierarchy.size()} HoneyNode rows"
         MajorAssetClass lastMajor = null
         def majors = [ ]
         def minors
@@ -46,6 +46,13 @@ class HoneycombService {
     def getMinor( Long minorId ) {
         log.info "Get MinorAssetClass id ${minorId}"
         MinorAssetClass.get( minorId )
+    }
+
+    def getMinorAssets( Long minorId ) {
+        log.info "Get Minor Assets id ${minorId}"
+        def minor = MinorAssetClass.get( minorId )
+        def pairs = MinorAssetPair.findAllByMinorAssetClass( minor,  [sort: 'sortOrder'] )
+        return new Tuple2( minor, pairs )
     }
 
     def saveMajor( params ) {

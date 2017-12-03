@@ -22,6 +22,16 @@ class HoneycombController {
 
     def minor( ) {
         Long minorId = params.long( 'id' )
+        log.info "Get MinorAssetClass ${minorId} and its pairs"
+        def ( MinorAssetClass minor, MinorAssetPair[] pairs ) = honeycombService.getMinorAssets( minorId )
+        [
+            minor: minor,
+            pairs: pairs
+        ]
+    }
+
+    def editMinor( ) {
+        Long minorId = params.long( 'id' )
         log.info "Edit MinorAssetClass ${minorId}"
         [
             minor: honeycombService.getMinor( minorId )
@@ -49,6 +59,6 @@ class HoneycombController {
 
         log.info "Save MinorAssetClass ${id}"
         honeycombService.saveMinor( params )
-        redirect action:"index"
+        redirect action:"minor", id: id
     }
 }
