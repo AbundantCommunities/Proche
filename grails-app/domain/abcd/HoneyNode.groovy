@@ -3,7 +3,7 @@ package abcd
  * A MinorAssetClass can belong to zero or more MajorAssetClass(es).
  * A MajorAssetClass can own zero or one of EACH MinorAssetClass.
  */
-class AssetClassHierarchy {
+class HoneyNode {
     MajorAssetClass majorAssetClass
     MinorAssetClass minorAssetClass
     Integer sortOrder // The order of MinorAssetClass(es) with a MajorAssetClass
@@ -17,6 +17,6 @@ class AssetClassHierarchy {
     }
     
     String toString( ) {
-        "Node[${majorAssetClass}:${minorAssetClass}]"
+        "HoneyNode[${majorAssetClass}:${minorAssetClass}]"
     }
 }

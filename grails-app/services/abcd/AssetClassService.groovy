@@ -4,7 +4,7 @@ import grails.transaction.Transactional
 
 @Transactional
 class AssetClassService {
-
+/*
     def getMajorClasses( ) {
         MajorAssetClass.listOrderBySortOrder( )
     }
@@ -53,4 +53,5 @@ class AssetClassService {
         }
         return result
     }
+*/
 }

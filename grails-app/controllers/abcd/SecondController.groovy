@@ -1,7 +1,7 @@
 package abcd
 
 class SecondController {
-
+/*
     def assetClassService
 
     def index( ) {
@@ -10,4 +10,5 @@ class SecondController {
         def result = assetClassService.getMinorClasses( id )
         [ 'majorClass': major, 'minorClasses': result ]
     }
+*/
 }

@@ -1,7 +1,7 @@
 package abcd
 
 class SearchController {
-
+/*
     def assetClassService
 
     def index() { }
@@ -24,4 +24,5 @@ class SearchController {
         }
         [ 'q':q, 'privateAssets':privates, 'groupAssets':groups ]
     }
+*/
 }

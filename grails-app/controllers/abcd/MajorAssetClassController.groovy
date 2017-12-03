@@ -3,6 +3,7 @@ package abcd
 // TODO Delete me (?!)
 
 class MajorAssetClassController {
+/*
     def honeycombService
 
     def view( ) {
@@ -12,4 +13,5 @@ class MajorAssetClassController {
             major: honeycombService.getMajor( majorId )
         ]
     }
+*/
 }

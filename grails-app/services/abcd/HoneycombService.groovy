@@ -91,7 +91,7 @@ class HoneycombService {
 
         minor.save( flush:true, failOnError: true )
     }
-
+/*
     def getMajorsOLD( ) {
         log.info "WTF?"
         MajorAssetClass.findAll("from MajorAssetClass as major order by major.sortOrder")
@@ -104,4 +104,5 @@ class HoneycombService {
             [ major: major] )
         return new Tuple2( major, nodes )
     }
+*/
 }

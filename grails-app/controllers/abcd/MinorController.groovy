@@ -1,7 +1,7 @@
 package abcd
 
 class MinorController {
-
+/*
     def assetClassService
 
     def index( ) {
@@ -11,4 +11,5 @@ class MinorController {
         def groups = assetClassService.groupSearch( id )
         [ 'minorClass':minor, 'privateAssets':privates, 'groupAssets':groups ]
     }
+*/
 }

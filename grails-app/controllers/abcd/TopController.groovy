@@ -1,7 +1,7 @@
 package abcd
 
 class TopController {
-
+/*
     def assetClassService
 
     def index( ) {
@@ -9,4 +9,5 @@ class TopController {
         println "result is ${result}"
         [ 'majorClasses': result ]
     }
-}
+*/
+} 

@@ -5,7 +5,7 @@ import java.net.URLEncoder
 
 @Transactional
 class AssetService {
-
+/*
     // TODO Consider removing firstLetters etc
     def firstLetters() {
         def assets = AssetSuggestion.list( [sort: 'name', order: 'asc'] )
@@ -33,7 +33,7 @@ class AssetService {
         }
         result
     }
-
+*/
     def search( String q, Integer offset ) {
         log.info "Search assets for ${q} offset ${offset}"
         def query = Asset.whereAny {
@@ -45,7 +45,7 @@ class AssetService {
         }
         query.list( [sort: 'name', offset: offset, max: 10000] )
     }
-
+/*
     def byFirstLetter( firstLetter ) {
         def nextLetter = 'C'
         def query = Asset.where {
@@ -55,7 +55,7 @@ class AssetService {
         def result = query.findAll( )
         log.info "Found ${result.size()} assets starting with ${firstLetter}"
     }
-
+*/
     def update( params ) {
         def id = params.long('id')
         def asset = Asset.get( id )
