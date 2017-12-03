@@ -33,7 +33,7 @@ class AssetSuggestionController {
     def edit( ) {
         authenticateService.ensurePrivileged( session )
         AssetSuggestion sug = AssetSuggestion.get( params.long('id') )
-        log.info "Edit sug"
+        log.info "Edit ${sug}"
         [
             sug: sug,
             mapLink: mapService.locateOnMap( sug.location )
@@ -51,6 +51,7 @@ class AssetSuggestionController {
             throw new RuntimeException( "assetSuggestion.name is empty" )
         }
 
+        normalizeUrl( params )
         assetSuggestionService.saveOffer( params )
 
         flash.message = "Thanks for your suggestion"
@@ -71,6 +72,7 @@ class AssetSuggestionController {
 
         params.schedule = 'N/A'
         params.keywords = params.keywords? params.keywords : 'N/A'
+        normalizeUrl( params )
 
         switch( button ) {
             case 'Update':
@@ -93,6 +95,22 @@ class AssetSuggestionController {
 
             default:
                 throw new Exception("Invalid button ${button}")
+        }
+    }
+
+    // TODO The normalizeUrl function is also in AssetController
+    def normalizeUrl( params ) {
+        String url = params.url
+        if( url ) {
+            if( url.startsWith("http://") || url.startsWith("https://") ) {
+                log.debug "We like ${url}"
+            }
+            else {
+                log.debug "Prefixing ${url} with http://"
+                params.url = "http://${url}"
+            }
+        } else {
+            log.debug "Sadly there is no URL"
         }
     }
 }

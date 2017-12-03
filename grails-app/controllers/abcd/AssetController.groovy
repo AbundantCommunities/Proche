@@ -122,6 +122,9 @@ class AssetController {
     def save() {
         authenticateService.ensurePrivileged( session )
         def id = params.long('id')
+
+        // TODO Check for valid params
+        normalizeUrl( params )
         if( !params.name ) {
             throw new RuntimeException( "asset.name is empty" )
         }
@@ -129,5 +132,21 @@ class AssetController {
         log.info "Save of asset ${id} requested"
         assetService.update( params )
         redirect action:'list'
+    }
+
+    // TODO The normalizeUrl function is also in AssetController
+    def normalizeUrl( params ) {
+        String url = params.url
+        if( url ) {
+            if( url.startsWith("http://") || url.startsWith("https://") ) {
+                log.debug "We like ${url}"
+            }
+            else {
+                log.debug "Prefixing ${url} with http://"
+                params.url = "http://${url}"
+            }
+        } else {
+            log.debug "Sadly there is no URL"
+        }
     }
 }

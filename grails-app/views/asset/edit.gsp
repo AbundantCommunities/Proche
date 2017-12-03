@@ -74,7 +74,7 @@
                             Location
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="location" size="70" value="${asset.location}" id="location" />
+                        <input type="text" name="location" size="70" required="" value="${asset.location}" id="location" />
                         <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
@@ -92,7 +92,7 @@
                             Email Address
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="emailAddress" value="${asset.emailAddress}" id="emailAddress" />
+                        <input type="email" name="emailAddress" value="${asset.emailAddress}" id="emailAddress" />
                     </div>
 
                     <div class="fieldcontain">

@@ -5,8 +5,8 @@ package abcd
  */
 class AssetClassHierarchy {
     MajorAssetClass majorAssetClass
-    Integer sortOrder // The order of MinorAssetClass(es) with a MajorAssetClass
     MinorAssetClass minorAssetClass
+    Integer sortOrder // The order of MinorAssetClass(es) with a MajorAssetClass
 
     Date dateCreated
     Date lastUpdated
@@ -17,6 +17,6 @@ class AssetClassHierarchy {
     }
     
     String toString( ) {
-        "Hierarchy[${majorAssetClass}:${minorAssetClass}]"
+        "Node[${majorAssetClass}:${minorAssetClass}]"
     }
 }
