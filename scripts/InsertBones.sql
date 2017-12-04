@@ -14,9 +14,7 @@ INSERT INTO minor_asset_class( id, version, name, description, keywords, date_cr
 
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 21, 0, 'Social networks', 'Groups of people you meet daily (church members, neighbours, etc).', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 22, 0, 'Support from family & friends', 'You can meet & talk with family & friends when you need to.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
-INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 23, 0, 'Social networks', 'Family, friends & neighbours you meet daily.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 24, 0, 'Friendships', 'People you are close to, even though they are not in your family.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
-INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 25, 0, 'Social networks', 'Family, friends & neighbours you meet daily.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 26, 0, 'Leadership skills', 'You are comfortable when it is your turn to decide for the group.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 27, 0, 'Political literacy & action', 'You understand how government and people-power work. You are comfortable when talking about that.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 28, 0, 'Community involvement', 'You feel you are part of your neighbourhood.', 'neighbour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
@@ -51,9 +49,7 @@ INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id,
 
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 21, 0, 2, 21, 21, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 22, 0, 2, 22, 22, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
-INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 23, 0, 2, 23, 23, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 24, 0, 2, 24, 24, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
-INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 25, 0, 2, 25, 25, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 26, 0, 2, 26, 26, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 27, 0, 2, 27, 27, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 28, 0, 2, 28, 28, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );

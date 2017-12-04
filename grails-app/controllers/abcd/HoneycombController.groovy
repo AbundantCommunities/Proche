@@ -23,7 +23,7 @@ class HoneycombController {
     def minor( ) {
         Long minorId = params.long( 'id' )
         log.info "Get MinorAssetClass ${minorId} and its pairs"
-        def ( MinorAssetClass minor, MinorAssetPair[] pairs ) = honeycombService.getMinorAssets( minorId )
+        def ( MinorAssetClass minor, MinorAssetPair[] pairs ) = honeycombService.getAssetsOfMinorClass( minorId )
         [
             minor: minor,
             pairs: pairs

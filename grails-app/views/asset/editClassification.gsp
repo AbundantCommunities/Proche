@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-
 <html>
 <head>
-    <title>Assets of a Minor Class</title>
+    <title>Edit Asset Classification</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,17 +21,26 @@
 
 <body>
     <div id="edit-asset" class="content scaffold-edit" role="main">
-        <h1>Assets of a Minor Class</h1>
+    <h1>Edit Asset Classification</h1>
+    <h2>${asset.name}</h2>
 
-        <p><g:link action="editMinor" id="${minor.id}">${minor.name}</g:link></p>
-        <p><em>${minor.description}</em></p>
-        <p>[${minor.keywords}]</p>
-        <p>
-        <g:each in="${pairs}" var="pair">
-            ${pair.asset.name}
+    <g:each in="${honeycomb}" var="augmentedMajor">
+        <em>${augmentedMajor.major.name}</em>
+        <br/>
+        <g:each in="${augmentedMajor.augmentedMinors}" var="augmentedMinor">
+            ${augmentedMinor.assetIsAssigned}
+            <g:if test="${augmentedMinor.assetIsAssigned==Boolean.TRUE}">
+                <a href='<g:createLink action="removeFromMinorClass" params="${[minorId:augmentedMinor.minor.id]}" id="${asset.id}"/>'>REMOVE</a>
+            </g:if>
+            <g:if test="${augmentedMinor.assetIsAssigned==Boolean.FALSE}">
+                <a href='<g:createLink action="addToMinorClass" params="${[minorId:augmentedMinor.minor.id]}" id="${asset.id}"/>'>ADD</a>
+            </g:if>
+            ${augmentedMinor.minor.name}
             <br/>
         </g:each>
-        </p>
+        <hr/>
+    </g:each>
+
     </div>
 </body>
 </html>

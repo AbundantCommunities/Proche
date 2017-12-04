@@ -4,7 +4,11 @@ import grails.transaction.Transactional
 
 @Transactional
 class HoneycombService {
-
+    /**
+     * Returns a list of dictionaries. Each entry is a dictionary with two entries:
+     * 1. 'major' is a MajorAssetClass
+     * 2. 'minors' is a list of MinorAssetClass
+     */
     def getHierarchy( )
     {
         def hierarchy = HoneyNode.findAll(
@@ -48,11 +52,76 @@ class HoneycombService {
         MinorAssetClass.get( minorId )
     }
 
-    def getMinorAssets( Long minorId ) {
-        log.info "Get Minor Assets id ${minorId}"
-        def minor = MinorAssetClass.get( minorId )
-        def pairs = MinorAssetPair.findAllByMinorAssetClass( minor,  [sort: 'sortOrder'] )
+    def getAssetsOfMinorClass( Long minorId ) {
+        log.info "Get Assets of Minor Class id ${minorId}"
+        MinorAssetClass minor = MinorAssetClass.get( minorId )
+        MinorAssetPair[] pairs = MinorAssetPair.findAllByMinorAssetClass( minor,  [sort: 'sortOrder'] )
         return new Tuple2( minor, pairs )
+    }
+
+    def getMinorClassesOfAsset( Long assetId ) {
+        log.info "Get Minor Classes of Asset id ${assetId}"
+        Asset asset = Asset.get( assetId )
+        MinorAssetPair[] pairs = MinorAssetPair.findAllByAsset( asset )
+
+        def honeycomb =  getHierarchy( )
+        honeycomb.each {
+            // each entry is a dictionary with two entries:
+            // 1. 'major' is a MajorAssetClass
+            // 2. 'minors' is a list of MinorAssetClass
+            MajorAssetClass major = it.major
+            MinorAssetClass[] minors = it.minors
+            def augments = [ ]
+            minors.each {
+                MinorAssetClass minor = it
+                // is minor in pairs? (i.e, is asset in pairs?)
+                Boolean assigned = Boolean.FALSE
+                pairs.each {
+                    if( it.minorAssetClass.equals(minor) ) {
+                        assigned = Boolean.TRUE
+                    }
+                }
+                augments << [ minor:minor, assetIsAssigned:assigned ]
+            }
+            it.augmentedMinors = augments
+        }
+        return new Tuple2( asset, honeycomb )
+    }
+
+    def addToMinorClass( Long assetId, Long minorId ) {
+        Asset asset = Asset.get( assetId )
+        MinorAssetClass minor = MinorAssetClass.get( minorId )
+
+        MinorAssetPair pair = MinorAssetPair.find {
+            minorAssetClass == minor
+            asset == asset
+        }
+
+        if( pair ) {
+            log.warn "${asset} is already paired with ${minor}"
+            throw new RuntimeException("Duplicate asset classification prevented")
+        } else {
+            log.info "Pair ${asset} with ${minor}"
+            pair = new MinorAssetPair( )
+            pair.minorAssetClass = minor
+            pair.asset = asset
+            pair.sortOrder = 123
+            pair.save( flush: true, failOnError: true )
+        }
+    }
+
+    def removeFromMinorClass( Long assetId, Long minorId ) {
+        Asset asset = Asset.get( assetId )
+        MinorAssetClass minor = MinorAssetClass.get( minorId )
+        //MinorAssetPair pair = MinorAssetPair.findAll("from MinorAssetPair where minorAssetClass=? and asset=?",[minor,asset])
+
+        def pair = MinorAssetPair.find {
+            minorAssetClass == minor
+            asset == asset
+        }
+
+        log.info "Delete ${pair}"
+        pair.delete( flush:true )
     }
 
     def saveMajor( params ) {

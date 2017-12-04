@@ -22,13 +22,15 @@
     <body>
         <div id="edit-asset" class="content scaffold-edit" role="main">
             <h1>Edit Asset</h1>
-
             <form action="<g:createLink action='save'/>" method="POST">
 
                 <input type="hidden" name="id" value="${asset.id}" />
                 <input type="hidden" name="version" value="${asset.version}" />
 
                 <fieldset class="form">
+                    <div>
+                        <a href="<g:createLink action='editClassification' id='${asset.id}' />">Edit Classification</a>
+                    </div>
 
                     <div class="fieldcontain  required">
                         <label for="name">

@@ -7,6 +7,7 @@ class AssetController {
     def mapService
     def authenticateService
     def assetSuggestionService
+    def honeycombService
 
     def comment( ) {
         log.info "Enter comment for a public asset ${params}"
@@ -109,14 +110,36 @@ class AssetController {
         Long id = params.long('id')
         log.info "Edit asset ${id}"
         Asset asset = Asset.get( id )
-        if( asset ) {
-            [
-                asset: asset,
-                mapLink: mapService.locateOnMap( asset.location )
-            ]
-        } else {
-            throw new Exception( "Asset ${id} not found")
-        }
+        def mapLink = mapService.locateOnMap( asset.location )
+        [
+            asset: asset,
+            mapLink: mapLink
+        ]
+    }
+
+    def editClassification( ){
+        authenticateService.ensurePrivileged( session )
+        Long id = params.long('id')
+        log.info "Edit classification of asset ${id}"
+        def( Asset asset, Object[] honeycomb ) = honeycombService.getMinorClassesOfAsset( id )
+        [
+            asset: asset,
+            honeycomb: honeycomb
+        ]
+    }
+
+    def addToMinorClass( ) {
+        authenticateService.ensurePrivileged( session )
+        log.info "Add asset ${params.id} to minor class ${params.minorId}"
+        honeycombService.addToMinorClass( params.long('id'), params.long('minorId') )
+        redirect action:'editClassification', id:params.long('id')
+    }
+
+    def removeFromMinorClass( ) {
+        authenticateService.ensurePrivileged( session )
+        log.info "Remove asset ${params.id} from minor class ${params.minorId}"
+        honeycombService.removeFromMinorClass( params.long('id'), params.long('minorId') )
+        redirect action:'editClassification', id:params.long('id')
     }
 
     def save() {
