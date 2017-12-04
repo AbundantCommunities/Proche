@@ -22,13 +22,15 @@
 <body>
     <div id="edit-asset" class="content scaffold-edit" role="main">
     <h1>Edit Asset Classification</h1>
+    <div>
+        <a href="<g:createLink action='edit' id='${asset.id}' />">Edit Asset Details</a>
+    </div>
     <h2>${asset.name}</h2>
 
     <g:each in="${honeycomb}" var="augmentedMajor">
         <em>${augmentedMajor.major.name}</em>
         <br/>
         <g:each in="${augmentedMajor.augmentedMinors}" var="augmentedMinor">
-            ${augmentedMinor.assetIsAssigned}
             <g:if test="${augmentedMinor.assetIsAssigned==Boolean.TRUE}">
                 <a href='<g:createLink action="removeFromMinorClass" params="${[minorId:augmentedMinor.minor.id]}" id="${asset.id}"/>'>REMOVE</a>
             </g:if>

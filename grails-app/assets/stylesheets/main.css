@@ -210,7 +210,7 @@ img {
 	text-decoration: underline;
 }
 
-.nav a.home, .nav a.list, .nav a.search, .nav a.suggest, .nav a.logout {
+.nav a.home, .nav a.list, .nav a.search, .nav a.suggest, .nav a.honeycomb, .nav a.logout {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
@@ -230,6 +230,10 @@ img {
 
 .nav a.search {
 	background-image: url(../images/search.png);
+}
+
+.nav a.honeycomb {
+	background-image: url(../images/honeycomb.jpg);
 }
 
 .nav a.logout {
@@ -600,7 +604,7 @@ th:hover, tr:hover {
 	text-decoration: underline;
 }
 
-.buttons .delete, .buttons .edit, .buttons .save, .buttons .doSearch {
+.buttons .delete, .buttons .edit, .buttons .save, .buttons .doHoneycomb, .buttons .doSearch {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
@@ -609,6 +613,10 @@ th:hover, tr:hover {
 .ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save,
 .ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save {
 	padding-left: 36px;
+}
+
+.buttons .doHoneycomb {
+	background-image: url(../images/doHoneycomb.png);
 }
 
 .buttons .doSearch {
