@@ -30,6 +30,10 @@
                 <input type="hidden" name="version" value="${minor.version}" />
 
                 <fieldset class="form">
+                    <div>
+                        <a href="<g:createLink action='minor' id='${minor.id}' />">Show assets</a>
+                    </div>
+
                     <div class="fieldcontain">
                         <label for="name">
                             Name

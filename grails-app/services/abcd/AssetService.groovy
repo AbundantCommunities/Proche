@@ -65,6 +65,9 @@ class AssetService {
             throw new Exception('Stale asset')
         }
 
+        Long communityId = Long.parseLong( params['asset.community.id'] )
+        asset.community = Community.get( communityId )
+
         asset.name = params.name
         asset.description = params.description
         asset.organization = params.organization
@@ -74,6 +77,7 @@ class AssetService {
         asset.emailAddress = params.emailAddress
         asset.url = params.url
         asset.schedule = 'N/A'
+
         if( params.keywords ) {
             log.info "Keywords not null; size is ${params.keywords.size()}"
             asset.keywords = params.keywords

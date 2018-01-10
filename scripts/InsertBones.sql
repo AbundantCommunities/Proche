@@ -1,3 +1,9 @@
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 500, 0, 'Bannerman', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 501, 0, 'Clareview Campus', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 502, 0, 'Fraser', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 503, 0, 'Hairsine', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 504, 0, 'Kirkness', CURRENT_DATE, CURRENT_DATE );
+
 INSERT INTO major_asset_class( id, version, name, description, keywords, sort_order, date_created, last_updated ) VALUES ( 1, 0, 'Basic Needs', 'The essentials of living.', '', 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO major_asset_class( id, version, name, description, keywords, sort_order, date_created, last_updated ) VALUES ( 2, 0, 'Sense of Belonging', 'The feeling you are part of your community.', '', 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO major_asset_class( id, version, name, description, keywords, sort_order, date_created, last_updated ) VALUES ( 3, 0, 'Personal Well-Being', 'Mental, spiritual & physical health.', '', 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );

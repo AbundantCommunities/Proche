@@ -10,6 +10,7 @@ class AssetSuggestion {
     String suggesterContactInfo
     String suggesterComment
 
+    Community community
     String name
     String description
     String organization
@@ -30,6 +31,7 @@ class AssetSuggestion {
     static transients = [ 'shortDescription' ]
 
     static constraints = {
+        community nullable: true
         description maxSize: 1000
         url maxSize: 2000
         suggesterComment maxSize: 2000

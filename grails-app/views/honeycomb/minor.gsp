@@ -26,11 +26,11 @@
 
         <p><g:link action="editMinor" id="${minor.id}">${minor.name}</g:link></p>
         <p><em>${minor.description}</em></p>
-        <p>[${minor.keywords}]</p>
+        <br/>
         <p>
         <g:each in="${pairs}" var="pair">
-            ${pair.asset.name}
-            <br/>
+            <em>${pair.asset.name}</em> – ${pair.asset.shortDescription}
+            <hr/>
         </g:each>
         </p>
     </div>

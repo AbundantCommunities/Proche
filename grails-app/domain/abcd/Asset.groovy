@@ -5,6 +5,7 @@ class Asset {
     String description
     String organization
     String location
+    Community community
 //    Venue venue
 //    String locationInVenue  // ex: "Rm 253", "north end of Allan St"
     Boolean zeroCost  // We don't use "free" because that term has tech meanings.
@@ -30,6 +31,7 @@ class Asset {
         description maxSize: 1000, blank: false
         organization blank: false
         location blank: false
+        community nullable: true
         phoneNumber blank: true
         emailAddress blank: true
         url maxSize: 2000, blank: true

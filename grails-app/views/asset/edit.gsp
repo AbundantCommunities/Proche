@@ -81,6 +81,22 @@
                     </div>
 
                     <div class="fieldcontain">
+                        <label for="community">
+                            Community
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <g:select
+                            id="community"
+                            name='asset.community.id'
+                            value="${asset.community?.id}"
+                            noSelection="${['null':'Select One...']}"
+                            from="${abcd.Community.list()}"
+                            optionKey="id"
+                            optionValue="name">
+                        </g:select>
+                    </div>
+
+                    <div class="fieldcontain">
                         <label for="url">
                             Web Page
                             <span class="required-indicator">&nbsp;</span>
