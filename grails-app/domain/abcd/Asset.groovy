@@ -1,7 +1,16 @@
 package abcd
 
 class Asset {
+//    static java.sql.Timestamp LONG_AGO
+//    static {
+//        def longAgo = new Date( )
+//        longAgo.clearTime()
+//        longAgo.set year: 1950, month: java.util.Calendar.JUNE, date: 21
+//        LONG_AGO = longAgo.toTimestamp( )
+//    }
+
     String name
+    String knownAs
     String description
     String organization
     String location
@@ -20,11 +29,17 @@ class Asset {
 //    Date becomeVisible
 //    Date becomeInvisible
 
+    Date formallyReviewed
     Date dateCreated
     Date lastUpdated
 
     String shortDescription
     static transients = [ 'shortDescription' ]
+
+    static mapping = {
+        formallyReviewed defaultValue: 'CURRENT_DATE'
+        knownAs defaultValue: "'KNOWN AS'"
+    }
 
     static constraints = {
         name blank: false

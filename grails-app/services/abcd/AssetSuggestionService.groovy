@@ -73,7 +73,12 @@ class AssetSuggestionService {
             throw new Exception('Stale suggested asset')
         }
 
-// sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
+        if( !params.location ) {
+            log.warn "Location not provided for ${sug}"
+            return "You did not enter a Location"
+        }
+
+        // sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
 
         // Keep alphabetical order so that we can easily desk-check what parameters we ALLOW to be copied.
         sug.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
@@ -91,7 +96,10 @@ class AssetSuggestionService {
         asset.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
                 'name', 'organization', 'phoneNumber', 'schedule', 'url', 'zeroCost'] = params
 
+        asset.formallyReviewed = new Date( )
+        asset.knownAs = asset.name
         asset.save( failOnError:true, flush:true )
+        return null
     }
 
     /**

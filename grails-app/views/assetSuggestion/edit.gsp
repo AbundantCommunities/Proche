@@ -29,20 +29,18 @@
 
                 <fieldset class="form">
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain required">
                         <label for="name">
                             Asset Name
-                            <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="name" size="50" required="" value="${sug.name}" id="name" />
+                        <input type="text" name="name" size="50" required value="${sug.name}" id="name" />
                     </div>
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain">
                         <label for="organization">
                             Organization
-                            <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="organization" size="50" required="" value="${sug.organization}" id="organization" />
+                        <input type="text" name="organization" size="50" value="${sug.organization}" id="organization" />
                     </div>
 
                     <div class="fieldcontain  ">
@@ -55,7 +53,6 @@
                     <div class="fieldcontain  required">
                         <label for="description">
                             Description
-                            <span class="required-indicator">*</span>
                         </label>
                         <textarea name="description" maxlength="1000" required="" id="description" >${sug.description}</textarea>
                     </div>
@@ -63,16 +60,14 @@
                     <div class="fieldcontain required">
                         <label for="location">
                             Location
-                            <span class="required-indicator">*</span>
                         </label>
-                        <input type="text" name="location" required="" size="70" value="${sug.location}" id="location" />
+                        <input type="text" name="location" size="70" value="${sug.location}" id="location" />
                         <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
                     <div class="fieldcontain">
                         <label for="url">
                             Web Page
-                            <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="url" size="70" value="${sug.url}" id="url" />
                         <a href="${sug.url}" target="_blank">View</a>
@@ -81,7 +76,6 @@
                     <div class="fieldcontain">
                         <label for="emailAddress">
                             Email Address
-                            <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="emailAddress" value="${sug.emailAddress}" id="emailAddress" />
                     </div>
@@ -89,31 +83,27 @@
                     <div class="fieldcontain">
                         <label for="phoneNumber">
                             Phone Number
-                            <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="phoneNumber" value="${sug.phoneNumber}" id="phoneNumber" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="suggesterName">
-                            YOUR Name
-                            <span class="required-indicator">&nbsp;</span>
+                            Submitter's Name
                         </label>
                         <input type="text" name="suggesterName" value="${sug.suggesterName}" id="suggesterName" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="suggesterContactInfo">
-                            YOUR Contact Info
-                            <span class="required-indicator">&nbsp;</span>
+                            Submitter's Contact Info
                         </label>
                         <input type="text" name="suggesterContactInfo" value="${sug.suggesterContactInfo}" id="suggesterContactInfo" />
                     </div>
 
                     <div class="fieldcontain">
                         <label for="suggesterComment">
-                            YOUR Comments
-                            <span class="required-indicator">&nbsp;</span>
+                            Submitter's Comments
                         </label>
                         <textarea name="suggesterComment" id="suggesterComment" >${sug.suggesterComment}</textarea>
                     </div>

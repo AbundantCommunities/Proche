@@ -83,8 +83,14 @@ class AssetSuggestionController {
 
             case 'Accept':
                 log.info "Accept ${params}"
-                assetSuggestionService.accept( params )
-                redirect action:'index'
+                def problem = assetSuggestionService.accept( params )
+                if( problem ) {
+                    flash.message = "We can't save your suggestion because ${problem}"
+                    flash.nature = 'WARNING'
+                    redirect action:'edit', id:id
+                } else {
+                    redirect action:'index'
+                }
                 break
 
             case 'Reject':

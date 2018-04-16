@@ -12,16 +12,17 @@ class Venue {
     String name  // of building, park, etc.
     String address  // Enough to translate to a lat & long.
 
-    // If virtual then lat & long will be null
+    // If Venue's location is virtual then lat & long will be null
 
-    // Lat & long have implied scale of 5 decimal places.
+    // Lat & long have implied Scale Factor of 5 decimal places.
     // Ex: 12345678 would 123.45678 degrees. 123 would be 0.00123 degrees.
+    // A value of 1 corresponds to 1.11 metres.
 
     // OR... Should I simply store floats??
     // Depends on how Grails maps to Postgres columns.
 
-    Long latitude  // A value of 1 is approx 1.11 metres
-    Long longitude // Distance changes with latitude.
+    Long latitude
+    Long longitude
 
     Date dateCreated
     Date lastUpdated

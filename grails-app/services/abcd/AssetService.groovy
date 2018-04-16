@@ -87,4 +87,16 @@ class AssetService {
 
         asset.save( flush:true, failOnError: true )
     }
+
+    def restfulSearch( ) {
+        def query = Long.parseLong( params.q )
+        log.info "Anon searching for ${query}"
+
+        // Result is like [[241,Home Plumbing],[50,Joseph Vautour], ...]
+        def assets = Asset.executeQuery(
+                'select trim(lower(a.text)), count(a) as ca from Answer as a where a.question.id=:qId group by trim(lower(a.text)) order by ca desc',
+                [q:q] )
+
+        render JsonWriter.write( assets )
+    }
 }

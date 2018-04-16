@@ -39,21 +39,27 @@ class AssetController {
 
     def search( ) {
         String q = params.q
-        Integer offset
-        
-        if( params.offset ) {
-            offset = params.integer( 'offset' )
+        if( q.length() < 3 ) {
+            flash.message = /"${q}" is too short! Please enter at least THREE characters./
+            flash.nature = 'WARNING'
+            redirect action:'initSearch'
         } else {
-            offset = 0
-        }
+            Integer offset
 
-        log.info "Search for ${q} offset ${offset}"
-        [
-            q: q,
-            offset: offset,
-            assets: assetService.search( q, offset ),
-            suggestionCount: assetSuggestionService.countUnresolved( )
-        ]
+            if( params.offset ) {
+                offset = params.integer( 'offset' )
+            } else {
+                offset = 0
+            }
+
+            log.info "Search for ${q} offset ${offset}"
+            [
+                q: q,
+                offset: offset,
+                assets: assetService.search( q, offset ),
+                suggestionCount: assetSuggestionService.countUnresolved( )
+            ]
+        }
     }
 
     def index() {

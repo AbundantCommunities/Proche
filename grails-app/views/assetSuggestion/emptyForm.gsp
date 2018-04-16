@@ -26,20 +26,20 @@
 
                 <fieldset class="form">
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain required">
                         <label for="name">
                             Asset Name
                             <span class="required-indicator">*</span>
                         </label>
-                            <input type="text" name="name" size="50" autofocus="yup" required="" value="" id="name" />
+                            <input type="text" name="name" size="50" autofocus="yup" required value="" id="name" />
                     </div>
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain">
                         <label for="organization">
                             Organization
-                            <span class="required-indicator">*</span>
+                            <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="organization" size="50" required="" value="" id="organization" />
+                        <input type="text" name="organization" size="50" value="" id="organization" />
                     </div>
 
                     <div class="fieldcontain  ">
@@ -49,12 +49,12 @@
                         <g:checkBox name="zeroCost" value=""/>
                     </div>
 
-                    <div class="fieldcontain  required">
+                    <div class="fieldcontain required">
                         <label for="description">
                             Description
                             <span class="required-indicator">*</span>
                         </label>
-                        <textarea name="description" maxlength="1000" required="" id="description" ></textarea>
+                        <textarea name="description" maxlength="1000" required id="description" ></textarea>
                     </div>
 
                     <div class="fieldcontain">
@@ -87,6 +87,13 @@
                             <span class="required-indicator">&nbsp;</span>
                         </label>
                         <input type="text" name="phoneNumber" value="" id="phoneNumber" />
+                    </div>
+
+                    <br/>
+                    <hr/>
+                    <div>
+                        <em>Optional</em>:
+                        Please tell us about yourself, in case we have questions about your suggestion.<br/>
                     </div>
 
                     <div class="fieldcontain">
