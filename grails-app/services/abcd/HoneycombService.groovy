@@ -4,10 +4,12 @@ import grails.transaction.Transactional
 
 @Transactional
 class HoneycombService {
+
     /**
-     * Returns a list of dictionaries. Each entry is a dictionary with two entries:
-     * 1. 'major' is a MajorAssetClass
-     * 2. 'minors' is a list of MinorAssetClass
+     * Returns a list of dictionaries. Each entry represents a MajorAssetClass and
+     * is a dictionary with two entries:
+     *    'major' is the MajorAssetClass
+     *    'minors' is a list of MinorAssetClass
      */
     def getHierarchy( )
     {
@@ -43,7 +45,7 @@ class HoneycombService {
     }
 
     def getMajor( Long majorId ) {
-        log.info "Get a MajorAssetClass"
+        log.info "Get MajorAssetClass ${majorId}"
         MajorAssetClass.get( majorId )
     }
 
