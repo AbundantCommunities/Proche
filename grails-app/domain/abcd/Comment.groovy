@@ -1,7 +1,8 @@
 package abcd
-
+/**
+ * The public can post a comment on any of our assets.
+ */
 class Comment {
-
     Asset asset
     String submitterName
     String submitterContactInfo

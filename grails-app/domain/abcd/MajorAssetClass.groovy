@@ -1,5 +1,8 @@
 package abcd
-
+/**
+ * In our 2-level hierarchy of asset classes, a MajorAssetClass is at the
+ * top level. See HoneyNode.
+ */
 class MajorAssetClass {
     String name
     String description

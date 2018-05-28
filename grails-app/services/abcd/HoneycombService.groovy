@@ -111,7 +111,7 @@ class HoneycombService {
             pair.save( flush: true, failOnError: true )
         }
     }
-
+/*
     def removeFromMinorClass( Long assetId, Long minorId ) {
         Asset asset = Asset.get( assetId )
         MinorAssetClass minor = MinorAssetClass.get( minorId )
@@ -125,7 +125,7 @@ class HoneycombService {
         log.info "Delete ${pair}"
         pair.delete( flush:true )
     }
-
+*/
     def saveMajor( params ) {
         def id = params.long('id')
         MajorAssetClass major = MajorAssetClass.get( id )
@@ -169,18 +169,4 @@ class HoneycombService {
 
         minor.save( flush:true, failOnError: true )
     }
-/*
-    def getMajorsOLD( ) {
-        log.info "WTF?"
-        MajorAssetClass.findAll("from MajorAssetClass as major order by major.sortOrder")
-    }
-
-    def getMinorsOLD( Long majorId  ) {
-        MajorAssetClass major = MajorAssetClass.get( majorId )
-        log.info "Get minors for ${major}"
-        def nodes = AssetClassHierarchy.findAll("from AssetClassHierarchy as harchy where harchy.majorAssetClass = :major order by harchy.sortOrder",
-            [ major: major] )
-        return new Tuple2( major, nodes )
-    }
-*/
 }

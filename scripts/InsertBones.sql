@@ -4,6 +4,19 @@ INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 5
 INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 503, 0, 'Hairsine', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 504, 0, 'Kirkness', CURRENT_DATE, CURRENT_DATE );
 
+INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 1, 0, 'Housing (Affordable)', 'Affordable housing', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 2, 0, 'Day care', 'Child care during working hours', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 3, 0, 'Christian worship', 'Catholic, Protestant, etc', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 4, 0, 'Music classes', 'Sessions for leaning to play instrument or to sing', CURRENT_DATE, CURRENT_DATE );
+
+INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 97, 4 ); /* Suzuiki Piano School :: Music classes */
+INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 39, 1 ); /* Affordable housing */
+INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 47, 1 ); /* Affordable housing */
+INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 42, 1 ); /* Affordable housing */
+INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 43, 1 ); /* Affordable housing */
+
+/* minor_asset_class_categories_id */
+INSERT INTO minor_asset_class_category( minor_asset_class_categories_id, category_id ) VALUES( )
 INSERT INTO major_asset_class( id, version, name, description, keywords, sort_order, date_created, last_updated ) VALUES ( 1, 0, 'Basic Needs', 'The essentials of living.', '', 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO major_asset_class( id, version, name, description, keywords, sort_order, date_created, last_updated ) VALUES ( 2, 0, 'Sense of Belonging', 'The feeling you are part of your community.', '', 20, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO major_asset_class( id, version, name, description, keywords, sort_order, date_created, last_updated ) VALUES ( 3, 0, 'Personal Well-Being', 'Mental, spiritual & physical health.', '', 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
@@ -38,6 +51,7 @@ INSERT INTO minor_asset_class( id, version, name, description, keywords, date_cr
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 44, 0, 'Job training, retention & advancement', 'You have training and certification required to get the jobs you want.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 45, 0, 'Numeracy', 'You can work with numbers well enough at work & at home.', 'math arithmetic', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 46, 0, 'Interpersonal', 'You communicate well with your fellow workers.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
+INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 47, 0, 'Cultural', 'Music, literature, poetry, etc.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 51, 0, 'Secure employment', 'A job that you can rely on.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO minor_asset_class( id, version, name, description, keywords, date_created, last_updated ) VALUES ( 52, 0, 'Savings', 'Some money in the bank.', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
@@ -73,6 +87,7 @@ INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id,
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 44, 0, 4, 44, 44, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 45, 0, 4, 45, 45, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 46, 0, 4, 46, 46, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
+INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 47, 0, 4, 47, 47, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 51, 0, 5, 51, 51, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );
 INSERT INTO honey_node( id, version, major_asset_class_id, minor_asset_class_id, sort_order, date_created, last_updated ) VALUES ( 52, 0, 5, 52, 52, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );

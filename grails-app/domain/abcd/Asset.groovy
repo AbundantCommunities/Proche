@@ -1,44 +1,36 @@
 package abcd
-
+/**
+ * The Asset class is the heart & soul of this application. All assets are
+ * considered PUBLIC. They are in no way confidential.
+ */
 class Asset {
-//    static java.sql.Timestamp LONG_AGO
-//    static {
-//        def longAgo = new Date( )
-//        longAgo.clearTime()
-//        longAgo.set year: 1950, month: java.util.Calendar.JUNE, date: 21
-//        LONG_AGO = longAgo.toTimestamp( )
-//    }
-
     String name
-    String knownAs
     String description
     String organization
     String location
     Community community
-//    Venue venue
-//    String locationInVenue  // ex: "Rm 253", "north end of Allan St"
-    Boolean zeroCost  // We don't use "free" because that term has tech meanings.
+    Boolean zeroCost  // We say zeroCost because free has technical meaning.
 
     String phoneNumber
     String emailAddress
     String url
-    String schedule
     String keywords
 
 // Anonymous search will find this asset only between these two dates
 //    Date becomeVisible
 //    Date becomeInvisible
 
-    Date formallyReviewed
+    Date reviewed
     Date dateCreated
     Date lastUpdated
 
     String shortDescription
     static transients = [ 'shortDescription' ]
 
+    static hasMany = [ categories : Category ]
+
     static mapping = {
-        formallyReviewed defaultValue: 'CURRENT_DATE'
-        knownAs defaultValue: "'KNOWN AS'"
+        reviewed defaultValue: 'CURRENT_DATE'
     }
 
     static constraints = {
@@ -50,7 +42,6 @@ class Asset {
         phoneNumber blank: true
         emailAddress blank: true
         url maxSize: 2000, blank: true
-        schedule blank: true
         keywords maxSize: 1000, blank: true
     }
 

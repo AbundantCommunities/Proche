@@ -1,5 +1,7 @@
 package abcd
-
+/**
+ * The public can suggest assets for us to include in our database.
+ */
 class AssetSuggestion {
     static final String UNRESOLVED = "Unresolved"
     static final String ACCEPTED = "Accepted"
