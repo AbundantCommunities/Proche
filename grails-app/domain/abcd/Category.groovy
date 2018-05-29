@@ -15,9 +15,14 @@ class Category {
 
     static hasMany = [ assets : Asset ]
 
-    /* Means: one adds a Category to an Asset, not vice versa */
-    static belongsTo = [ Asset ]
+    /* This means: one adds a Category to an Asset or to a MinorAssetClass.
+     * One does adds neither Assets nor MinorAssetClasses to a Category. */
+    static belongsTo = [ Asset, MinorAssetClass ]
 
     static constraints = {
+    }
+    
+    String toString( ) {
+        "Category ${id}:${name}"
     }
 }

@@ -14,6 +14,7 @@
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 
 // by default, databinding trims strings & then turns empty strings to null
+// We turn that horrible behaviour OFF !!
 grails.databinding.convertEmptyStringsToNull = false
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)

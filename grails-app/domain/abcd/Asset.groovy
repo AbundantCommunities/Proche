@@ -62,4 +62,8 @@ class Asset {
             return description.substring( 0, 160 ) + "..."
         }
     }
+    
+    String toString( ) {
+        "Asset ${id}:${name}"
+    }
 }

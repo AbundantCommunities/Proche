@@ -7,7 +7,7 @@ INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 5
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 1, 0, 'Housing (Affordable)', 'Affordable housing', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 2, 0, 'Day care', 'Child care during working hours', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 3, 0, 'Christian worship', 'Catholic, Protestant, etc', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 4, 0, 'Music classes', 'Sessions for leaning to play instrument or to sing', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 4, 0, 'Music classes', 'Learn an instrument, learn to sing, etc.', CURRENT_DATE, CURRENT_DATE );
 
 INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 97, 4 ); /* Suzuiki Piano School :: Music classes */
 INSERT INTO ASSET_CATEGORIES( asset_id, category_id ) VALUES( 39, 1 ); /* Affordable housing */

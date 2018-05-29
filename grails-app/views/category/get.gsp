@@ -3,21 +3,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Asset Categories</title>
+        <title>Assets for a Category</title>
         <meta name="layout" content="main">
     </head>
     <body>
-        <h1>Asset Categories</h1>
+        <h1>Assets for Category ${category.name}</h1>
         <table>
-        <g:each in="${categories}" var="category">
+        <g:each in="${category.assets}" var="asset">
             <tr>
                 <td width="30%">
-                    ${category.name}
-                    <g:link controller="category" action="get" id="${category.id}">GET</g:link>
-                    <g:link controller="category" action="getOthers" id="${category.id}">ADD</g:link>
+                    <g:link controller="category" action="removeAsset" id="${category.id}" params="${[assetId:asset.id]}">
+                        ${asset.name}
+                    </g:link>
                 </td>
                 <td width="70%">
-                    <em>${category.description}</em>
+                    <em>${asset.shortDescription}</em>
                 </td>
             </tr>
         </g:each>

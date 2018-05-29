@@ -16,7 +16,7 @@
     <r:layoutResources />
 </head>
 <body>
-    <div id="grailsLogo" role="banner"><a href="https://myunitedway.ca"><img src="${resource(dir: 'images', file: 'CommunitiesUnited-COLOR-300dpi.png')}" alt="Communities United"/></a></div>
+    <div id="grailsLogo" role="banner"><a href="http://cuyeg.org"><img src="${resource(dir: 'images', file: 'CommunitiesUnited-COLOR-300dpi.png')}" alt="Communities United"/></a></div>
     <div class="nav" role="navigation">
         <ul>
             <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
