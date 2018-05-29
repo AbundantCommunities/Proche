@@ -21,18 +21,35 @@ class CategoryService {
     def removeAsset( Long assetId, Long categoryId ) {
         Category category = Category.get( categoryId )
         Asset asset = Asset.get( assetId )
-        if( asset in category.assets ) {
-            // category.assets is a Hibernate PersistentSet
+        if( category in asset.categories ) {
+            // asset.categories is a Hibernate PersistentSet
+            println "asset.categories is a ${asset.categories.class.name}"
             log.info "Removing ${asset} from ${category}"
-            def res = category.assets.removeElement( asset )
+            def res = asset.categories.removeElement( category )
             println "Result of removeElement is ${res}"
-            category.save( failOnError: true )
+            asset.save( failOnError: true )
             return asset
         } else {
             log.warn "${asset} is not in ${category}"
             return null
         }
     }
+
+//    def removeAsset( Long assetId, Long categoryId ) {
+//        Category category = Category.get( categoryId )
+//        Asset asset = Asset.get( assetId )
+//        if( asset in category.assets ) {
+//            // category.assets is a Hibernate PersistentSet
+//            log.info "Removing ${asset} from ${category}"
+//            def res = category.assets.removeElement( asset )
+//            println "Result of removeElement is ${res}"
+//            category.save( failOnError: true )
+//            return asset
+//        } else {
+//            log.warn "${asset} is not in ${category}"
+//            return null
+//        }
+//    }
 
     def getOthers( Long categoryId ) {
         Category category = Category.get( categoryId )
