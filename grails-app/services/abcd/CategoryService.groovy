@@ -5,6 +5,8 @@ import groovy.sql.Sql
 
 @Transactional
 class CategoryService {
+    // Grails injects the default DataSource
+    def dataSource
 
     def getAll( ) {
         def categories = Category.listOrderByDescription( )
@@ -35,33 +37,36 @@ class CategoryService {
         }
     }
 
-//    def removeAsset( Long assetId, Long categoryId ) {
-//        Category category = Category.get( categoryId )
-//        Asset asset = Asset.get( assetId )
-//        if( asset in category.assets ) {
-//            // category.assets is a Hibernate PersistentSet
-//            log.info "Removing ${asset} from ${category}"
-//            def res = category.assets.removeElement( asset )
-//            println "Result of removeElement is ${res}"
-//            category.save( failOnError: true )
-//            return asset
-//        } else {
-//            log.warn "${asset} is not in ${category}"
-//            return null
-//        }
-//    }
+    def addAsset( Long assetId, Long categoryId ) {
+        Category category = Category.get( categoryId )
+        Asset asset = Asset.get( assetId )
+        if( category in asset.categories ) {
+            // asset.categories is a Hibernate PersistentSet
+            log.info "Odd: ${asset} is already in ${category}"
+        } else {
+            log.info "Adding ${asset} to ${category}"
+            asset.categories = asset.categories + category
+            asset.save( failOnError: true )
+        }
+        return new Tuple2( category, asset )
+    }
 
+    /**
+     * Get all assets that are NOT in a given category
+     */
     def getOthers( Long categoryId ) {
         Category category = Category.get( categoryId )
         log.info "Fetching assets NOT in ${category}"
-        
-        peeps = Person.executeQuery(
-            """select p.id, p.firstNames, p.lastName, p.phoneNumber, p.emailAddress, a.text
-             from Person p join p.family f join f.address a
-             where (LOWER(a.text) like :q OR LOWER(a.note) like :q OR LOWER(f.name) like :q OR LOWER(f.note) like :q
-             OR LOWER(p.firstNames) like :q OR LOWER(p.lastName) like :q OR LOWER(p.phoneNumber) like :q OR LOWER(p.emailAddress) like :q
-             OR LOWER(p.note) like :q)
-             and a.block.neighbourhood.id = :id order by p.firstNames, p.lastName, p.id""",
-            [ q:searchTerm, id:neighbourhoodId, fromYear:fromYear, toYear:toYear ] )
+
+        def select = 
+            """SELECT asset.id, asset.name, asset.description
+               FROM asset
+               WHERE asset.id NOT IN (SELECT asset_id FROM asset_categories WHERE category_id = :categoryId)
+               ORDER BY asset.name, asset.id"""
+
+        final Sql sql = new Sql(dataSource)
+        def assets = sql.rows( select, [ categoryId:categoryId ] )
+        log.info "Found ${assets.size()} not in ${category}"
+        return new Tuple2( category, assets )
     }
 }
