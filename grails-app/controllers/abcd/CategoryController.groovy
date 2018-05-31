@@ -19,6 +19,23 @@ class CategoryController {
         ]
     }
 
+    def enter( ) {
+        log.info "Get a blank form to enter a new category"
+    }
+
+    def save( ) {
+        log.info "Save new category ${params.name}"
+        Category category = categoryService.save( params.name, params.description)
+        if( category ) {
+            flash.message = "Removed Asset: ${category.name}"
+            flash.nature = "SUCCESS"
+        } else {
+            flash.message = "Failed to add the new category"
+            flash.nature = "WARNING"
+        }
+        redirect action:"index"
+    }
+
     def removeAsset( ) {
         def assetId = params.long("assetId")
         def categoryId = params.long("id")
@@ -37,7 +54,7 @@ class CategoryController {
         def assetId = params.long("assetId")
         def categoryId = params.long("id")
         def ( Category category, Asset asset ) = categoryService.addAsset( assetId, categoryId )
-        flash.message = "Added Asset: ${asset.name} to Category ${category.name}"
+        flash.message = "Added ${asset.name} to Category ${category.name}"
         flash.nature = "SUCCESS"
         redirect action:"getOthers", id:categoryId
     }

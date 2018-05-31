@@ -22,6 +22,20 @@
     <body>
         <div id="edit-asset" class="content scaffold-edit" role="main">
             <h1>Edit Asset</h1>
+            <b>Categories</b>
+            <table>
+            <g:each in="${asset.categories}" var="category">
+                <tr>
+                    <td width="30%">
+                        ${category.name}
+                    </td>
+                    <td width="70%">
+                        ${category.description}
+                    </td>
+                </tr>
+            </g:each>
+            </table>
+
             <form action="<g:createLink action='save'/>" method="POST">
 
                 <input type="hidden" name="id" value="${asset.id}" />

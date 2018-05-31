@@ -20,6 +20,12 @@ class CategoryService {
         return category
     }
 
+    def save( String name, String description ) {
+        Category category = new Category( name:name, description:description )
+        category.save( failOnError: true )
+        return category
+    }
+
     def removeAsset( Long assetId, Long categoryId ) {
         Category category = Category.get( categoryId )
         Asset asset = Asset.get( assetId )

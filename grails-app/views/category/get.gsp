@@ -7,7 +7,7 @@
         <meta name="layout" content="main">
     </head>
     <body>
-        <h1>Assets for Category ${category.name}</h1>
+        <h1>Remove Assets from Category ${category.name}</h1>
         <table>
         <g:each in="${category.assets}" var="asset">
             <tr>

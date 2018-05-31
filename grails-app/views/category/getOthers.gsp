@@ -4,9 +4,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Assets to Category</title>
+        <meta name="layout" content="main">
     </head>
     <body>
-        <h1>Assets not in Category ${category.name}</h1>
+        <h1>Add Assets to Category ${category.name}</h1>
         <table>
         <g:each in="${assets}" var="asset">
             <tr>
