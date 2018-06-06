@@ -14,9 +14,13 @@ class CategoryService {
         return categories
     }
 
+    /**
+     * Get a given category; Thanks to GORM, that Category gives us access
+     * to all of the category's assets.
+     */
     def get( Long categoryId ) {
         Category category = Category.get( categoryId )
-        log.info "Fetching assets of ${category}"
+        log.info "Fetching ${category} and all of its assets"
         return category
     }
 
@@ -26,6 +30,9 @@ class CategoryService {
         return category
     }
 
+    /**
+     * Remove an asset from a category.
+     */
     def removeAsset( Long assetId, Long categoryId ) {
         Category category = Category.get( categoryId )
         Asset asset = Asset.get( assetId )
@@ -43,6 +50,9 @@ class CategoryService {
         }
     }
 
+    /**
+     * Add an asset to a category.
+     */
     def addAsset( Long assetId, Long categoryId ) {
         Category category = Category.get( categoryId )
         Asset asset = Asset.get( assetId )
