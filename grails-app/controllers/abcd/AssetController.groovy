@@ -62,13 +62,6 @@ class AssetController {
         }
     }
 
-    def index() {
-        log.info "Odd. Someone asked for assets counted by letter"
-        [
-            countsByLetter: assetService.firstLetters( )
-        ]
-    }
-
     def list() {
         // TODO this code is non-DRY WRT AssetSuggestionController
         Long offset
@@ -150,7 +143,6 @@ class AssetController {
 
     def save() {
         authenticateService.ensurePrivileged( session )
-        def id = params.long('id')
 
         // TODO Check for valid params
         normalizeUrl( params )
@@ -158,7 +150,15 @@ class AssetController {
             throw new RuntimeException( "asset.name is empty" )
         }
 
-        log.info "Save of asset ${id} requested"
+        log.info "Save of asset id ${params.id} requested"
+
+        // If HTML checkbox is cleared then the params.active will not exist
+        if( params.active ) {
+            params['active'] = 'TRUE'
+        } else {
+            params['active'] = 'FALSE'
+        }
+
         assetService.update( params )
         redirect action:'list'
     }

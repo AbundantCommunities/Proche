@@ -68,6 +68,7 @@
                     </g:link>
                 </td>
                 <td width="70%">
+                    <g:if test="${!asset.active}"><div style="color: red">INACTIVE</div></g:if>
                     <b>${asset.organization}</b><br/>
                     <em>${asset.shortDescription}</em>
                 </td>

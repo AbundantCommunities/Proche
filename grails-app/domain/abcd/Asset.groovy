@@ -1,9 +1,10 @@
 package abcd
 /**
  * The Asset class is the heart & soul of this application. All assets are
- * considered PUBLIC. They are in no way confidential.
+ * considered PUBLIC.
  */
 class Asset {
+    Boolean active
     String name
     String description
     String organization
@@ -30,6 +31,7 @@ class Asset {
     static hasMany = [ categories : Category ]
 
     static mapping = {
+        active   defaultValue: "'TRUE'"
         reviewed defaultValue: 'CURRENT_DATE'
     }
 
@@ -37,7 +39,7 @@ class Asset {
         name blank: false
         description maxSize: 1000, blank: false
         organization blank: false
-        location blank: false
+        location blank: true
         community nullable: true
         phoneNumber blank: true
         emailAddress blank: true

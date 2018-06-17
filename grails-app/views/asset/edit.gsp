@@ -63,6 +63,13 @@
                     </div>
 
                     <div class="fieldcontain  ">
+                        <label for="active">
+                            ACTIVE
+                        </label>
+                        <g:checkBox name="active" value="${asset.active}"/>
+                    </div>
+
+                    <div class="fieldcontain  ">
                         <label for="zeroCost">
                             Free
                         </label>
@@ -90,7 +97,7 @@
                             Location
                             <span class="required-indicator">&nbsp;</span>
                         </label>
-                        <input type="text" name="location" size="70" required="" value="${asset.location}" id="location" />
+                        <input type="text" name="location" size="70" value="${asset.location}" id="location" />
                         <a href="${mapLink}" target="_blank">Map</a>
                     </div>
 
