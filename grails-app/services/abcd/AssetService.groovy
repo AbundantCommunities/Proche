@@ -6,16 +6,20 @@ import java.net.URLEncoder
 @Transactional
 class AssetService {
 
-    def search( String q, Integer offset ) {
-        log.info "Search assets for ${q} offset ${offset}"
-        def query = Asset.whereAny {
-            name =~ "%${q}%"
-            description =~ "%${q}%"
-            organization =~ "%${q}%"
-            location =~ "%${q}%"
-            keywords =~ "%${q}%"
+    def search( String q ) {
+        log.info "Public search: ${q}"
+        def assets = Asset.withCriteria {
+            eq( "active", Boolean.TRUE )
+            or {
+                ilike( "organization", "%${q}%" )
+                ilike( "name",         "%${q}%" )
+                ilike( "description",  "%${q}%" )
+                ilike( "location",     "%${q}%" )
+                ilike( "keywords",     "%${q}%" )
+            }
+            order( "name" )
         }
-        query.list( [sort: 'name', offset: offset, max: 10000] )
+        return assets
     }
 
     def update( params ) {

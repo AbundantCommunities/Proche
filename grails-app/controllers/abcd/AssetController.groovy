@@ -44,19 +44,10 @@ class AssetController {
             flash.nature = 'WARNING'
             redirect action:'initSearch'
         } else {
-            Integer offset
-
-            if( params.offset ) {
-                offset = params.integer( 'offset' )
-            } else {
-                offset = 0
-            }
-
-            log.info "Search for ${q} offset ${offset}"
+            log.info "Search for ${q}"
             [
                 q: q,
-                offset: offset,
-                assets: assetService.search( q, offset ),
+                assets: assetService.search( q ),
                 suggestionCount: assetSuggestionService.countUnresolved( )
             ]
         }
