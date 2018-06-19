@@ -6,9 +6,25 @@ import java.net.URLEncoder
 @Transactional
 class AssetService {
 
+    def restfulSearch( ) {
+        def query = Long.parseLong( params.q )
+        log.info "Anon searching for ${query}"
+
+        // Result is like [[241,Home Plumbing],[50,Joseph Vautour], ...]
+        def assets = Asset.executeQuery(
+                'select trim(lower(a.text)), count(a) as ca from Answer as a where a.question.id=:qId group by trim(lower(a.text)) order by ca desc',
+                [q:q] )
+
+        render JsonWriter.write( assets )
+    }
+
+    /**
+     * We intend that, generally, only application administrators will want
+     * to see inactive assets.
+     */
     def search( String q, Boolean showInactive ) {
         if( showInactive ) {
-            log.info "Search assets (including inactive) for ${q}"
+            log.info "Search assets (active & inactive) for ${q}"
             return Asset.withCriteria {
                 or {
                     ilike( "organization", "%${q}%" )
@@ -70,17 +86,5 @@ class AssetService {
         }
 
         asset.save( flush:true, failOnError: true )
-    }
-
-    def restfulSearch( ) {
-        def query = Long.parseLong( params.q )
-        log.info "Anon searching for ${query}"
-
-        // Result is like [[241,Home Plumbing],[50,Joseph Vautour], ...]
-        def assets = Asset.executeQuery(
-                'select trim(lower(a.text)), count(a) as ca from Answer as a where a.question.id=:qId group by trim(lower(a.text)) order by ca desc',
-                [q:q] )
-
-        render JsonWriter.write( assets )
     }
 }
