@@ -44,10 +44,11 @@ class AssetController {
             flash.nature = 'WARNING'
             redirect action:'initSearch'
         } else {
+            Boolean showInactive = authenticateService.isPrivileged( session )
             log.info "Search for ${q}"
             [
                 q: q,
-                assets: assetService.search( q ),
+                assets: assetService.search( q, showInactive ),
                 suggestionCount: assetSuggestionService.countUnresolved( )
             ]
         }

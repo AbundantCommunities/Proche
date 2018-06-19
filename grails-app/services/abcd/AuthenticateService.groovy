@@ -13,6 +13,14 @@ class AuthenticateService {
         }
     }
 
+    def isPrivileged( session ) {
+        if( session.user ) {
+            return Boolean.TRUE
+        } else {
+            return Boolean.FALSE
+        }
+    }
+
     def check( String emailAddress, String password ) {
         // First version of authentication tied to env var
         if( emailAddress.equalsIgnoreCase("admin@communitiesunitedyeg.ca") && password.equals(widget) ) {
