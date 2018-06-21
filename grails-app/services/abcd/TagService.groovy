@@ -11,7 +11,9 @@ class TagService {
         log.info "For tag ${tagText} found ${taggedAssets.size()}"
         def assets = [ ]
         taggedAssets.each {
-            assets << it.asset
+            // If we pass actual Asset objects then groovy.json.JsonOutput
+            // will barf in our controller.
+            assets << [ id:it.asset.id, name:it.asset.name ]
         }
         return assets
     }
