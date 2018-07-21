@@ -29,54 +29,5 @@
         <a href="mailto:mark@cognish.com?Subject=Communities%20United%20Database">mark@cognish.com</a>
         with questions, ideas, comments, favourite recipes, ...
     </p>
-
-<table>
-    <a href="https://preview.communitiesunitedyeg.ca/asset/view/87>">
-    <tr>
-        <td>Program Name</td>
-        <td>Short Description</td>
-    </tr>
-    </a>
-</table>
-
-    
-    
-    <div id="ProcheAssets"></div>
-<br/>
-
-<script>
-var xmlhttp = new XMLHttpRequest( );
-var assetTable;
-
-xmlhttp.onreadystatechange = function( ) {
-    if( xmlhttp.readyState == 4 ) {
-        assetTable = JSON.parse( xmlhttp.responseText );
-        buildTable( assetTable );
-    }
-};
-
-var ProcheTag = 'brillig';
-
-xmlhttp.open("GET", 'http://localhost:8080/Proche/tag?q=' + ProcheTag, true);
-xmlhttp.send( );
-
-function buildTable( arr ) {
-    var out = '<table>';
-    var i;
-
-    for(i = 0; i < arr.length; i++) {
-        out += '<a href="https://preview.communitiesunitedyeg.ca/asset/view/' + arr[i].id + '">';
-        out += '<tr>';
-        out +=     '<td>' + arr[i].name + '</td>';
-        out +=     '<td>' + arr[i].shortDescription + '</td>';
-        out += '</tr>';
-        out += '</a>';
-    }
-
-    out += '</table>';
-    document.getElementById("ProcheAssets").innerHTML = out;
-}
-</script>
-
 </body>
 </html>
