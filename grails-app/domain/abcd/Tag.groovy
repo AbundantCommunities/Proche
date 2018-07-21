@@ -10,6 +10,9 @@ class Tag {
 
     String text
 
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
     }
 }

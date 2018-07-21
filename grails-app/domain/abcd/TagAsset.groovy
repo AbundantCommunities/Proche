@@ -11,5 +11,9 @@ class TagAsset {
     Integer sortOrder
 
     static constraints = {
+        // FIXME This unique-constraint fails to generate postgres equivalent
+        // ... see HoneyNode
+        // An asset can exist at most once for a given tag
+        asset unique: ['tag']
     }
 }

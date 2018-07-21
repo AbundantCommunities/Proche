@@ -1,11 +1,13 @@
 package abcd
 /**
- * An asset can be assigned to one or more categories. Here is an example of
- * why we need categories: We have an asset whose program name is "Our Lady of
- * Grace Program". That name was chosen by the organization that runs the
- * program. Displaying that name to someone tells them nothing about the
- * program's goals & services. Assigning the asset to categories "Teen
- * Pregnancies" and "Parenting for teens" helps.
+ * An asset can be assigned to one or more categories. Think of asset
+ * categories as "types of assets".
+ * 
+ * Here is an example of why we need categories: We have an asset whose
+ * program name is "Our Lady of Grace Program". That name was chosen by the
+ * organization that runs the program. Displaying that name to someone tells
+ * them nothing about the program's goals & services. Assigning the asset to
+ * categories "Teen Pregnancies" and "Parenting for teens" helps.
  */
 class Category {
     String name

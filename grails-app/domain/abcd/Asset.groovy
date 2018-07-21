@@ -1,7 +1,7 @@
 package abcd
 /**
  * The Asset class is the heart & soul of this application. All assets are
- * considered PUBLIC.
+ * considered PUBLIC (although some Asset fields are used only internally).
  */
 class Asset {
     Boolean active
