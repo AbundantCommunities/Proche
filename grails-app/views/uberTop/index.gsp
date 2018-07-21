@@ -30,10 +30,18 @@
         with questions, ideas, comments, favourite recipes, ...
     </p>
 
-<div id="ProcheAssets"/>
-<br/>
-<br/>
-<br/>
+<table>
+    <a href="https://preview.communitiesunitedyeg.ca/asset/view/87>">
+    <tr>
+        <td>Program Name</td>
+        <td>Short Description</td>
+    </tr>
+    </a>
+</table>
+
+    
+    
+    <div id="ProcheAssets"></div>
 <br/>
 
 <script>
@@ -53,17 +61,19 @@ xmlhttp.open("GET", 'http://localhost:8080/Proche/tag?q=' + ProcheTag, true);
 xmlhttp.send( );
 
 function buildTable( arr ) {
-    var out = '<div>';
+    var out = '<table>';
     var i;
 
     for(i = 0; i < arr.length; i++) {
-        out += '<div>';
-		out += '<a href="https://preview.communitiesunitedyeg.ca/asset/view/' + arr[i].id + '">';
-        out += arr[i].name;
-        out += '</div>'
+        out += '<a href="https://preview.communitiesunitedyeg.ca/asset/view/' + arr[i].id + '">';
+        out += '<tr>';
+        out +=     '<td>' + arr[i].name + '</td>';
+        out +=     '<td>' + arr[i].shortDescription + '</td>';
+        out += '</tr>';
+        out += '</a>';
     }
 
-    out += '</div>'
+    out += '</table>';
     document.getElementById("ProcheAssets").innerHTML = out;
 }
 </script>
