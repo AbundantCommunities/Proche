@@ -90,14 +90,14 @@ class AssetSuggestionService {
 
         Asset asset = new Asset( )
 
-// sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
+        // sug.zeroCost = (params.zeroCost != null)  // This field will be absent if checkbox is cleared
 
         // Keep alphabetical order so that we can easily desk-check what parameters we ALLOW to be copied.
         asset.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
                 'name', 'organization', 'phoneNumber', 'schedule', 'url', 'zeroCost'] = params
 
         asset.formallyReviewed = new Date( )
-        asset.knownAs = asset.name
+        asset.active = Boolean.TRUE
         asset.save( failOnError:true, flush:true )
         return null
     }

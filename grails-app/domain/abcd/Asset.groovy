@@ -21,7 +21,7 @@ class Asset {
 //    Date becomeVisible
 //    Date becomeInvisible
 
-    Date reviewed
+    Date formallyReviewed
     Date dateCreated
     Date lastUpdated
 
@@ -32,7 +32,7 @@ class Asset {
 
     static mapping = {
         active   defaultValue: "'TRUE'"
-        reviewed defaultValue: 'CURRENT_DATE'
+        formallyReviewed defaultValue: 'CURRENT_DATE'
     }
 
     static constraints = {

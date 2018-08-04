@@ -7,14 +7,19 @@ INSERT INTO tag_asset( id, version, tag_id, asset_id, sort_order ) VALUES( 3, 0,
 INSERT INTO tag_asset( id, version, tag_id, asset_id, sort_order ) VALUES( 4, 0, 2, 21, 100 );
 INSERT INTO tag_asset( id, version, tag_id, asset_id, sort_order ) VALUES( 5, 0, 2, 52, 200 );
 
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 1, 0, 'Bannerman', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 2, 0, 'Clareview Campus', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 3, 0, 'Fraser', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 4, 0, 'Hairsine', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 5, 0, 'Kirkness', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 6, 0, 'Kernohan', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 7, 0, 'Homesteader', CURRENT_DATE, CURRENT_DATE );
-INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 8, 0, 'Canon Ridge', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 1,  0, 'Bannerman', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 2,  0, 'Clareview Campus', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 3,  0, 'Fraser', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 4,  0, 'Hairsine', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 5,  0, 'Kirkness', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 6,  0, 'Kernohan', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 7,  0, 'Homesteader', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 8,  0, 'Canon Ridge', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 9,  0, 'Balwin', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 10, 0, 'Casselman', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 11, 0, 'York', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 12, 0, 'Evansdale', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 13, 0, 'Kilkenny', CURRENT_DATE, CURRENT_DATE );
 
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 1, 0, 'Housing (Affordable)', 'Affordable housing', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 2, 0, 'Day care', 'Child care during working hours', CURRENT_DATE, CURRENT_DATE );
