@@ -16,6 +16,7 @@ class TagController {
         String tagText = params.q
         log.info "Tag is ${tagText}"
 
+        // FIXME Tighten this CORS header.
         // Other sites that call this service can use our data as they see fit
         header( 'Access-Control-Allow-Origin', '*' )
 

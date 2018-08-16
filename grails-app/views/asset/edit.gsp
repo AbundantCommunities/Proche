@@ -111,7 +111,7 @@
                             name='asset.community.id'
                             value="${asset.community?.id}"
                             noSelection="${['null':'Select One...']}"
-                            from="${abcd.Community.list()}"
+                            from="${abcd.Community.list(sort:'name')}"
                             optionKey="id"
                             optionValue="name">
                         </g:select>

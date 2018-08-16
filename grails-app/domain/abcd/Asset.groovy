@@ -4,17 +4,18 @@ package abcd
  * considered PUBLIC (although some Asset fields are used only internally).
  */
 class Asset {
-    Boolean active
-    String name
+    Boolean active  // else not visible to the public at this time
+    String name  // what the operating organization calls the asset
     String description
-    String organization
-    String location
-    Community community
+    String organization // who owns or operates this asset
+    String location  // like "123 Happy Lane NW"
+    Community community  // AKA neighbourhood
     Boolean zeroCost  // We say zeroCost because free has technical meaning.
 
-    String phoneNumber
-    String emailAddress
-    String url
+    String url  // Ideally, this tells the user phone #, email address, etc
+    String phoneNumber  // Who to contact for more info
+    String emailAddress  // Who to contact for more info
+
     String keywords
 
 // Anonymous search will find this asset only between these two dates
