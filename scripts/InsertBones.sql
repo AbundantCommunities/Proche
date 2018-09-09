@@ -20,6 +20,14 @@ INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 1
 INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 11, 0, 'York', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 12, 0, 'Evansdale', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 13, 0, 'Kilkenny', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 14, 0, 'Sifton', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 15, 0, 'McCauley', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 16, 0, 'Hollick-Kenyon', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 17, 0, 'Belmont', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 18, 0, 'Abbotsfield', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 19, 0, 'Belvedere', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 20, 0, 'Bonnie Doon', CURRENT_DATE, CURRENT_DATE );
+INSERT INTO community( id, version, name, date_created, last_updated ) VALUES( 21, 0, 'Highlands', CURRENT_DATE, CURRENT_DATE );
 
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 1, 0, 'Housing (Affordable)', 'Affordable housing', CURRENT_DATE, CURRENT_DATE );
 INSERT INTO category( id, version, name, description, date_created, last_updated ) VALUES( 2, 0, 'Day care', 'Child care during working hours', CURRENT_DATE, CURRENT_DATE );
