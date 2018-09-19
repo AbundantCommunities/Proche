@@ -12,15 +12,18 @@ class Asset {
     Community community  // AKA neighbourhood
     Boolean zeroCost  // We say zeroCost because free has technical meaning.
 
-    String url  // Ideally, this tells the user phone #, email address, etc
-    String phoneNumber  // Who to contact for more info
-    String emailAddress  // Who to contact for more info
+    String url  // Contact info (else we need phone # and/or email address)
+    String phoneNumber  // Public contact for more info
+    String emailAddress  // Public contact for more info
 
     String keywords
 
 // Anonymous search will find this asset only between these two dates
 //    Date becomeVisible
 //    Date becomeInvisible
+
+    BigDecimal locationLatitude  // in degrees; negative is south of equator
+    BigDecimal locationLongitude  // in degrees; negative is west of Greenwich
 
     Date formallyReviewed
     Date dateCreated
@@ -32,11 +35,18 @@ class Asset {
     static hasMany = [ categories : Category ]
 
     static mapping = {
+        locationLatitude  defaultValue: 0.0
+        locationLongitude defaultValue: 0.0
         active   defaultValue: "'TRUE'"
         formallyReviewed defaultValue: 'CURRENT_DATE'
     }
 
     static constraints = {
+        // Scale is 5 because 0.00001 degrees latitude is around 1 metre.
+        // One metre is close enough for our purposes.
+        locationLatitude  nullable: true, scale: 5
+        locationLongitude nullable: true, scale: 5
+
         name blank: false
         description maxSize: 1000, blank: false
         organization blank: false
