@@ -9,14 +9,14 @@ import org.locationtech.jts.geom.Geometry
 import groovy.time.TimeCategory 
 import groovy.time.TimeDuration
 
-def ourLat = 53.54081
-def ourLon = -113.42417
+def ourLat = 53.5395713
+def ourLon = -113.61572009999999
 
 Coordinate myCoordinate = new Coordinate( ourLon, ourLat )
 GeometryFactory factory = new GeometryFactory( )
 Geometry myPoint = factory.createPoint( myCoordinate )
 
-def csvFile = new File('NEIGHBOURHOODS_SHAPE.csv')
+def csvFile = new File('/Users/theguy/Downloads/NEIGHBOURHOODS_SHAPE.csv')
 // NUMBER,AREA_KM2,NAME,the_geom
 
 def geomReader = new WKTReader()
