@@ -1,7 +1,7 @@
 package abcd
 /**
- * The Asset class is the heart & soul of this application. All assets are
- * considered PUBLIC (although some Asset fields are used only internally).
+ * The Asset class is the heart & soul of this application. Geneally speaking,
+ * assets are considered PUBLIC, although some fields are used only internally.
  */
 class Asset {
     Boolean active  // else not visible to the public at this time
@@ -10,13 +10,14 @@ class Asset {
     String organization // who owns or operates this asset
     String location  // like "123 Happy Lane NW"
     Community community  // AKA neighbourhood
-    Boolean zeroCost  // We say zeroCost because free has technical meaning.
+    Boolean zeroCost  // We say zeroCost because "free" has technical meaning
 
-    String url  // Contact info (else we need phone # and/or email address)
+    String url  // To get contact info, else we need phone # or email
     String phoneNumber  // Public contact for more info
     String emailAddress  // Public contact for more info
 
     String keywords
+    String administratorComment
 
 // Anonymous search will find this asset only between these two dates
 //    Date becomeVisible
@@ -56,6 +57,7 @@ class Asset {
         emailAddress blank: true
         url maxSize: 2000, blank: true
         keywords maxSize: 1000, blank: true
+        administratorComment maxSize: 500, blank: true
     }
 
     def getShortDescription( ) {
