@@ -34,9 +34,12 @@ class AssetSuggestion {
 
     static constraints = {
         community nullable: true
+        // FIXME suggestion descr max GT asset desc max
         description maxSize: 1000
         url maxSize: 2000
+        // FIXME suggesterComment max way too long
         suggesterComment maxSize: 2000
+        administratorComment maxSize: 500
         keywords maxSize: 1000
     }
 
