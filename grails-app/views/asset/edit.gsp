@@ -141,6 +141,14 @@
                         </label>
                         <input type="text" name="phoneNumber" value="${asset.phoneNumber}" id="phoneNumber" />
                     </div>
+
+                    <div class="fieldcontain">
+                        <label for="administratorComment">
+                            Administrator Comment
+                            <span class="required-indicator">&nbsp;</span>
+                        </label>
+                        <textarea name="administratorComment" maxlength="500" id="administratorComment">${asset.administratorComment}</textarea>
+                    </div>
                 </fieldset>
 
                 <fieldset class="buttons">

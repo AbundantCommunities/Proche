@@ -77,6 +77,7 @@ class AssetService {
         asset.phoneNumber = params.phoneNumber
         asset.emailAddress = params.emailAddress
         asset.url = params.url
+        asset.administratorComment = params.administratorComment
 
         if( params.keywords ) {
             log.info "Keywords not null; size is ${params.keywords.size()}"
