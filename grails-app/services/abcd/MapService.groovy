@@ -21,4 +21,11 @@ class MapService {
         loc = URLEncoder.encode(loc, "UTF-8")
         return "https://www.google.ca/maps/place/${loc}"
     }
+    
+    def walkingTime( BigDecimal aLat, aLon, bLat, bLon ) {
+       // For first go at this, simply calculate an arbitrary measure of distance
+       def latDiff = aLat - bLat
+       def lonDiff = aLon - bLon
+       return (latDiff^2 + lonDif^2) ** 0.5
+    }
 }

@@ -88,6 +88,13 @@
                     </div>
 
                     <div class="fieldcontain">
+                        <label for="administratorComment">
+                            Administrator Comments
+                        </label>
+                        <textarea name="administratorComment" id="administratorComment" >${sug.administratorComment}</textarea>
+                    </div>
+
+                    <div class="fieldcontain">
                         <label for="suggesterName">
                             Submitter's Name
                         </label>
