@@ -6,6 +6,10 @@ import java.net.URLEncoder
 @Transactional
 class AssetService {
 
+    def countActive( ) {
+        Asset.countByActive( Boolean.TRUE )
+    }
+
     def restfulSearch( ) {
         def query = Long.parseLong( params.q )
         log.info "Anon searching for ${query}"
