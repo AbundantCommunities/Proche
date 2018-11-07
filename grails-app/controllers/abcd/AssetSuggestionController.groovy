@@ -12,17 +12,31 @@ class AssetSuggestionController {
      */
     def index() {
         authenticateService.ensurePrivileged( session )
+
+        // TODO this code is non-DRY WRT AssetController
         Long offset
         Integer max
-        if( !params.max ) {
-            offset = 0
-            max = 5
-        } else {
+        if( params.offset ) {
             offset = params.long('offset')
             max = params.int('max')
+        } else {
+            if( session.pagination ) {
+                offset = session.pagination.offset
+                max = session.pagination.max
+            } else {
+                offset = 0
+                max = 5
+            }
+            params.offset = offset
+            params.max = max
         }
+
+        log.info "List suggested assets offset ${offset} max ${max}"
+        session.pagination = [ offset:offset, max:max ]
+
         [
             sugs: AssetSuggestion.findAllByResolution( AssetSuggestion.UNRESOLVED,  [max:max, offset:offset, sort:'name'] ),
+            sugCount: AssetSuggestion.countByResolution( AssetSuggestion.UNRESOLVED )
         ]
     }
 
@@ -36,7 +50,7 @@ class AssetSuggestionController {
         log.info "Edit ${sug}"
         [
             sug: sug,
-            mapLink: mapService.locateOnMap( sug.location )
+            mapLink: mapService.locateOnMap( sug )
         ]
     }
 

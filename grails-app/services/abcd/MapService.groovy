@@ -6,20 +6,32 @@ import java.net.URLEncoder
 @Transactional
 class MapService {
 
-    String locateOnMap( String loc ) {
-        if( loc.endsWith("NW") ) {
-            loc += ", Edmonton, AB, Canada"
+    static String secretKey = "AIzaSyChkKjGW_93a6YpKuyZu4HolKr38_wvT5Q"
+
+    String locateOnMap( asset ) {
+        log.info "Creating Google Maps URL for ${asset} with location ${asset.location}"
+
+        def url
+        def loc = URLEncoder.encode( asset.location, "UTF-8" )
+        def communityName = URLEncoder.encode( asset.community.name, "UTF-8" )
+
+        if( loc.equalsIgnoreCase("N/A") ) {
+            url = "https://maps.googleapis.com/maps/api/staticmap?center=${communityName},Edmonton,AB&zoom=15&size=900x900&maptype=roadmap&key=${secretKey}"
         } else {
-            def tail = loc.indexOf(" NW,")
-            if( tail > 0 ) {
-                loc = loc.substring( 0, tail ) + " NW, Edmonton, AB, Canada"
+            if( loc.endsWith("NW") ) {
+                loc += ",Edmonton,AB,Canada"
             } else {
-                loc += " NW, Edmonton, AB, Canada"
+                def tail = loc.indexOf("+NW,")
+                if( tail > 0 ) {
+                    loc = loc.substring( 0, tail ) + "+NW,Edmonton,AB,Canada"
+                } else {
+                    loc += "+NW,Edmonton,AB,Canada"
+                }
             }
+            url = "https://maps.googleapis.com/maps/api/staticmap?center=${communityName},Edmonton,AB&zoom=15&size=900x900&maptype=roadmap&markers=color:red|${loc}&key=${secretKey}"
         }
-        log.info "Created Google Maps link for ${loc}"
-        loc = URLEncoder.encode(loc, "UTF-8")
-        return "https://www.google.ca/maps/place/${loc}"
+
+        return url
     }
     
     def walkingTime( BigDecimal aLat, aLon, bLat, bLon ) {

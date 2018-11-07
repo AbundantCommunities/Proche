@@ -66,6 +66,22 @@
                     </div>
 
                     <div class="fieldcontain">
+                        <label for="community">
+                            Community
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <g:select
+                            id="community"
+                            name='sug.community.id'
+                            value="${sug.community?.id}"
+                            noSelection="${['null':'Select One...']}"
+                            from="${abcd.Community.list(sort:'name')}"
+                            optionKey="id"
+                            optionValue="name">
+                        </g:select>
+                    </div>
+
+                    <div class="fieldcontain">
                         <label for="url">
                             Web Page
                         </label>

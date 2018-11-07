@@ -89,7 +89,7 @@ class AssetController {
         if( asset ) {
             [
                 asset: asset,
-                mapLink: mapService.locateOnMap( asset.location )
+                mapLink: mapService.locateOnMap( asset )
             ]
         } else {
             throw new Exception( "Asset ${id} not found")
@@ -101,7 +101,7 @@ class AssetController {
         Long id = params.long('id')
         log.info "Edit asset ${id}"
         Asset asset = Asset.get( id )
-        def mapLink = mapService.locateOnMap( asset.location )
+        def mapLink = mapService.locateOnMap( asset )
         [
             asset: asset,
             mapLink: mapLink

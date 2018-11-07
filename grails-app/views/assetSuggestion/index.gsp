@@ -70,5 +70,8 @@
             </tr>
         </g:each>
         </table>
+        <br/>
+        &nbsp;&nbsp;&nbsp;
+        <g:paginate total="${sugCount}"/>
     </body>
 </html>

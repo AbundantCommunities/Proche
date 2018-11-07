@@ -85,6 +85,15 @@ class AssetSuggestionService {
                 'name', 'organization', 'phoneNumber', 'schedule', 'suggesterComment', 'suggesterContactInfo',
                 'suggesterName', 'url', 'zeroCost'] = params
 
+        // TODO Make DRY WRT AssetService
+        if( params['sug.community.id'] == "null" ) {
+            sug.community = null
+        } else {
+            // TODO Prevent an asset from having NO COMMUNITY (??)
+            Long communityId = Long.parseLong( params['sug.community.id'] )
+            sug.community = Community.get( communityId )
+        }
+
         sug.resolution = AssetSuggestion.ACCEPTED
         sug.save( failOnError:true, flush:true )
 
@@ -95,6 +104,9 @@ class AssetSuggestionService {
         // Keep alphabetical order so that we can easily desk-check what parameters we ALLOW to be copied.
         asset.properties[ 'administratorComment', 'description', 'emailAddress', 'keywords', 'location',
                 'name', 'organization', 'phoneNumber', 'schedule', 'url', 'zeroCost'] = params
+
+        // This is kludgee
+        asset.community = sug.community
 
         asset.formallyReviewed = new Date( )
         asset.active = Boolean.TRUE

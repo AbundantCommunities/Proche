@@ -64,6 +64,7 @@ class AssetService {
             throw new Exception('Stale asset')
         }
 
+        // TODO Make DRY WRT AssetSuggestionService
         if( params['asset.community.id'] == "null" ) {
             asset.community = null
         } else {
