@@ -48,7 +48,7 @@ class AssetSuggestion {
     }
 
     String toString( ) {
-        "SuggestedAsset ${id} ${resolution} name ${name} loc ${location}"
+        "SuggestedAsset ${id} state:${resolution} name:${name} loc:${location}"
     }
 
     // FIXME same method is in Asset domain class
