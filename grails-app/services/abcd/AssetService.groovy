@@ -23,13 +23,16 @@ class AssetService {
     }
 
     /**
-     * We intend that, generally, only application administrators will want
+     * We intend that, generally speaking, only application administrators will want
      * to see inactive assets.
      */
-    def search( String q, Boolean showInactive ) {
+    def search( String q, Boolean showInactive, Long communityId, Integer walkingDistance ) {
+        Community community = Community.get( communityId )
+        
         if( showInactive ) {
             log.info "Search assets (active & inactive) for ${q}"
             return Asset.withCriteria {
+                eq( "community", community )
                 or {
                     ilike( "organization", "%${q}%" )
                     ilike( "name",         "%${q}%" )
@@ -42,6 +45,7 @@ class AssetService {
         } else {
             log.info "Search active assets for ${q}"
             return Asset.withCriteria {
+                eq( "community", community )
                 eq( "active", Boolean.TRUE )
                 or {
                     ilike( "organization", "%${q}%" )

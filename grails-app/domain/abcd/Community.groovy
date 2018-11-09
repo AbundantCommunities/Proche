@@ -39,4 +39,8 @@ class Community {
         centreLatitude  defaultValue: 0.0
         centreLongitude defaultValue: 0.0
     }
+
+    String toString( ) {
+        "Community ${id}:${name}"
+    }
 }

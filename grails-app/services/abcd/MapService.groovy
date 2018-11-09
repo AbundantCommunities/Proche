@@ -40,8 +40,12 @@ class MapService {
 
         return url
     }
-    
-    def walkingTime( BigDecimal aLat, aLon, bLat, bLon ) {
+
+    /**
+     * Estimate how long it would take to walk between two points on a map.
+     * The unit of measure is minutes.
+     **/
+    def walkingTime( BigDecimal aLat, BigDecimal aLon, BigDecimal bLat, BigDecimal bLon ) {
        // For first go at this, simply calculate an arbitrary measure of distance
        def latDiff = aLat - bLat
        def lonDiff = aLon - bLon

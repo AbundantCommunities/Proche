@@ -45,10 +45,16 @@ class AssetController {
             redirect action:'initSearch'
         } else {
             Boolean showInactive = authenticateService.isPrivileged( session )
-            log.info "Search for ${q}"
+            def activeScope = showInactive?'Include inactive assets':'Exclude inactive assets'
+            Integer walkingDistance = params.int('walkingDistance')
+            Long communityId = params.long('communityId')
+
+            log.info "Search community ${communityId} for ${q}, ${activeScope}, ${walkingDistance} minutes"
             [
+                communityId: communityId,
+                walkingDistance: walkingDistance,
                 q: q,
-                assets: assetService.search( q, showInactive ),
+                assets: assetService.search( q, showInactive, communityId, walkingDistance ),
                 suggestionCount: assetSuggestionService.countUnresolved( )
             ]
         }
