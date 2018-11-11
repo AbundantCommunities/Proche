@@ -2,9 +2,13 @@ package abcd
 
 import grails.transaction.Transactional
 import java.net.URLEncoder
+import groovy.sql.Sql
 
 @Transactional
 class AssetService {
+
+    // Grails injects the default DataSource
+    def dataSource
 
     def countActive( ) {
         Asset.countByActive( Boolean.TRUE )
@@ -96,5 +100,19 @@ class AssetService {
         }
 
         asset.save( flush:true, failOnError: true )
+    }
+
+    /**
+     * If includeInactive is TRUE then we consider inactive assets when we determine
+     * what communities have assets.
+     */
+    def getCommunitiesInUse( Boolean includeInactive ) {
+
+        def clause = includeInactive ? '' : 'AND a.active'
+        def select = 'SELECT DISTINCT c.id, c.name FROM asset AS a, community AS c WHERE a.community_id = c.id ' + clause + ' ORDER by c.name'
+
+        final Sql sql = new Sql( dataSource )
+        def communities = sql.rows( select )
+        return communities
     }
 }

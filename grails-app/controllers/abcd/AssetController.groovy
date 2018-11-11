@@ -32,32 +32,35 @@ class AssetController {
     }
 
     def initSearch( ) {
-        // I wish I could remember how to specify a URI for our form so that
-        // this closure is not required!
-        log.info "Init a search of assets"
+        Boolean includeInactive = authenticateService.isPrivileged( session )
+        def communitiesInUse = assetService.getCommunitiesInUse( includeInactive )
+        log.info "User will search assets from ${communitiesInUse.size()} communities"
+        [
+                communities: communitiesInUse
+        ]
     }
 
     def search( ) {
-        String q = params.q
-//        if( q.length() < 3 ) {
-//            flash.message = /"${q}" is too short! Please enter at least THREE characters./
-//            flash.nature = 'WARNING'
-//            redirect action:'initSearch'
-//        } else {
-            Boolean showInactive = authenticateService.isPrivileged( session )
-            def activeScope = showInactive?'Include inactive assets':'Exclude inactive assets'
-            Integer walkingDistance = params.int('walkingDistance')
-            Long communityId = params.long('communityId')
+        Long communityId = params.long('communityId')
+        if( !communityId ) {
+            flash.message = "You didn't select a community. Try again!"
+            flash.nature = 'WARNING'
+            redirect action:'initSearch'
+        }
 
-            log.info "Search community ${communityId} for ${q}, ${activeScope}, ${walkingDistance} minutes"
-            [
-                communityId: communityId,
-                walkingDistance: walkingDistance,
-                q: q,
-                assets: assetService.search( q, showInactive, communityId, walkingDistance ),
-                suggestionCount: assetSuggestionService.countUnresolved( )
-            ]
-//        }
+        String q = params.q
+        Boolean showInactive = authenticateService.isPrivileged( session )
+        def activeScope = showInactive?'Include inactive assets':'Exclude inactive assets'
+        Integer walkingDistance = params.int('walkingDistance')
+
+        log.info "Search community ${communityId} for ${q}, ${activeScope}, ${walkingDistance} minutes"
+        [
+            communityId: communityId,
+            walkingDistance: walkingDistance,
+            q: q,
+            assets: assetService.search( q, showInactive, communityId, walkingDistance ),
+            suggestionCount: assetSuggestionService.countUnresolved( )
+        ]
     }
 
     def list() {

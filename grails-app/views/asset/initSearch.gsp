@@ -24,15 +24,12 @@
                     Community
                     <span class="required-indicator">*</span>
                 </label>
-                <g:select
-                    id="communityId"
-                    name='communityId'
-                    value=""
-                    noSelection="${['null':'Select One...']}"
-                    from="${abcd.Community.list(sort:'name')}"
-                    optionKey="id"
-                    optionValue="name">
-                </g:select>
+                <select id="communityId" name="communityId" required="" >
+                    <option value="null">Select One...</option>
+                    <g:each in="${communities}" var="community">
+                        <option value="${community.id}">${community.name}</option>
+                    </g:each>
+                </select>
             </div>
 
             <div class="fieldcontain">
