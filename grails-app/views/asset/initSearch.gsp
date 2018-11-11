@@ -42,11 +42,11 @@
                 <input type="text" name="walkingDistance" size="3" value="5" id="walkingDistance" />
             </div>
 
-            <div class="fieldcontain required">
+            <div class="fieldcontain">
                 <label for="q">
                     Search for?
                 </label>
-                <input type="text" name="q" size="50" autofocus="yup" required value="" id="q" />
+                <input type="text" name="q" size="50" autofocus="yup" value="" id="q" />
             </div>
         </fieldset>
 

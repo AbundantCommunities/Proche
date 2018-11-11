@@ -39,11 +39,11 @@ class AssetController {
 
     def search( ) {
         String q = params.q
-        if( q.length() < 3 ) {
-            flash.message = /"${q}" is too short! Please enter at least THREE characters./
-            flash.nature = 'WARNING'
-            redirect action:'initSearch'
-        } else {
+//        if( q.length() < 3 ) {
+//            flash.message = /"${q}" is too short! Please enter at least THREE characters./
+//            flash.nature = 'WARNING'
+//            redirect action:'initSearch'
+//        } else {
             Boolean showInactive = authenticateService.isPrivileged( session )
             def activeScope = showInactive?'Include inactive assets':'Exclude inactive assets'
             Integer walkingDistance = params.int('walkingDistance')
@@ -57,7 +57,7 @@ class AssetController {
                 assets: assetService.search( q, showInactive, communityId, walkingDistance ),
                 suggestionCount: assetSuggestionService.countUnresolved( )
             ]
-        }
+//        }
     }
 
     def list() {
