@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <h1>Found ${assets.size()} assets containing "${q}" in ${abcd.Community.get(communityId)}</h1>
+        <h1>Found ${assets.size()} assets containing "${q}" in ${abcd.Community.get(communityId).name} Community</h1>
         <g:if test="${suggestionCount}">
             <p><em>We have ${suggestionCount} suggestions waiting for approval; they will not be found by search.</em></p>
             <br/>
