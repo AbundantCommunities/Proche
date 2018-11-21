@@ -6,7 +6,7 @@ class TagController {
 
     /**
      * Example: http://localhost:8080/Proche/tag?q=food might return this
-     * JSON text containging two assets: [{"id":87,"name":"Community Kitchen"},
+     * JSON text containing two assets: [{"id":87,"name":"Community Kitchen"},
      * {"id":89,"name":"How to grow vegetables"}]
      * 
      * Note the above is JUST an example. Our TagService controls what properties
