@@ -8,7 +8,7 @@
 
 <body>
 <form>
-    <select id="mySelect" onchange="getAssets()">
+    <select id="tagSelect" name="tagName" onchange="getAssets()">
       <option value="easter-egg">Select a tag...
       <option value="food">Food
       <option value="training">Training
@@ -19,8 +19,9 @@
 
 <script type="text/javascript">
 function getAssets() {
+    var tagSelected = document.getElementById('tagSelect').value;
     var xmlhttp = new XMLHttpRequest( );
-    var url = 'https://proche.abundantcommunityinitiative.org/tag?q=food'
+    var url = 'https://proche.abundantcommunityinitiative.org/tag?q=' + tagSelected
 
     xmlhttp.onreadystatechange = function( ) {
         if( xmlhttp.readyState == 4 /* && xmlhttp.status == 200 */ ) {
@@ -33,14 +34,22 @@ function getAssets() {
     xmlhttp.send( );
 
     function displayAssets( assets ) {
-        var outString = "";
+        var rend = '<div style="font-family: Arial, Helvetica, sans-serif;">';
         for( i = 0; i < assets.length; i++ ) {
             var asset = assets[i];
-            outString += "<b>" + asset.name + "</b><br/>";
-            outString += "<i>&nbsp;&nbsp;&nbsp;&nbsp;" + asset.shortDescription + "</i><br/><br/>";
+            /* The argument to hitMe is the div that defines the onclick */
+            rend += '<div id="' + asset.id + '" onclick="hitMe(this)">';
+            rend += '<div id="name" style="font-style: italic;">' + asset.name + '</div>';
+            rend += '<div id="descr" style="width: 450px; margin-left: 50px; margin-top:6px; margin-bottom:11px;">' + asset.shortDescription + '</div>';            rend += '</a>';
+            rend += '</div>';
         }
-        document.getElementById('cool').innerHTML = outString;
+        rend += '</div>';
+        document.getElementById('cool').innerHTML = rend;
     }
+}
+
+function hitMe( e ) {
+    window.location.assign( "https://proche.abundantcommunityinitiative.org/asset/view/" + e.id );
 }
 </script>
 </body>
