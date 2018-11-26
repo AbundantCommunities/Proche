@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="basic">
     <title>TEST PROCHE REST API</title>
+    <meta name="layout" content="basic">
 
+    <!-- On smaller displays prevent browser from simply scaling our content to teeny, tiny sized. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+section {
+    width: 100vw;
+    max-width: 100ch;
+
+    margin: 0 auto;
+    padding: 1.5em 1em;
+}<</style>
 </head>
 
 <body>
-<form>
-    <select id="tagSelect" name="tagName" onchange="getAssets()">
-      <option value="easter-egg">Select a tag...
-      <option value="food">Food
-      <option value="training">Training
-      <option value="after-school">After school
-    </select>
-</form>
-<p id="cool"></p>
+<section>
+    <form>
+        <select id="tagSelect" name="tagName" onchange="getAssets()">
+          <option value="easter-egg">Select a tag...
+          <option value="food">Food
+          <option value="training">Training
+          <option value="after-school">After school
+        </select>
+    </form>
+    <p id="cool"></p>
+</section>
 
 <script type="text/javascript">
 function getAssets() {
@@ -40,7 +53,7 @@ function getAssets() {
             /* The argument to hitMe is the div that defines the onclick */
             rend += '<div id="' + asset.id + '" onclick="hitMe(this)">';
             rend += '<div id="name" style="font-style: italic;">' + asset.name + '</div>';
-            rend += '<div id="descr" style="width: 450px; margin-left: 50px; margin-top:6px; margin-bottom:11px;">' + asset.shortDescription + '</div>';            rend += '</a>';
+            rend += '<div id="descr" style="margin-left: 1em; margin-right: 0.2em; margin-top:6px; margin-bottom:11px;">' + asset.shortDescription + '</div>';            rend += '</a>';
             rend += '</div>';
         }
         rend += '</div>';
