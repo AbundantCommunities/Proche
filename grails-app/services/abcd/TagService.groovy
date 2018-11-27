@@ -13,7 +13,14 @@ class TagService {
         taggedAssets.each {
             // If we pass actual Asset objects then groovy.json.JsonOutput
             // will barf in our controller.
-            assets << [ id:it.asset.id, name:it.asset.name, shortDescription:it.asset.shortDescription ]
+            assets << [
+                id:it.asset.id,
+                name:it.asset.name,
+                shortDescription:it.asset.shortDescription,
+                description: it.asset.description,
+                organization: it.asset.organization,
+                communitityName: it.asset.community.name
+            ]
         }
         return assets
     }
