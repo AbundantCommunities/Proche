@@ -61,7 +61,7 @@ function getAssets( taggedBy ) {
             rend += '<div id="descr" style="margin-left: 1em; margin-right: 0.2em; margin-top:6px; margin-bottom:11px;">';
             rend += asset.description + '</br></br>ORGANIZATION is ' + asset.organization + '<br/><br/>';
 //          rend += '<a href="https://proche.abundantcommunityinitiative.org/asset/view/' + asset.id + '">CLICK ME!</a>';
-            rend += '<a href="http://localhost:8080/Proche/asset/view/' + asset.id + '">CLICK ME!</a>';
+            rend += '<a href="http://localhost:8080/Proche/asset/viewPublic/' + asset.id + '">CLICK ME!</a>';
             rend += '</div>';
             rend += '</div>';
             rend += '</div>';

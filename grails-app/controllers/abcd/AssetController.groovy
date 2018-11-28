@@ -105,6 +105,20 @@ class AssetController {
         }
     }
 
+    def viewPublic( ){
+        Long id = params.long('id')
+        log.info "Public view asset ${id}"
+        Asset asset = Asset.get( id )
+        if( asset ) {
+            [
+                asset: asset,
+                mapLink: mapService.locateOnMap( asset )
+            ]
+        } else {
+            throw new Exception( "Asset ${id} not found")
+        }
+    }
+
     def edit( ){
         authenticateService.ensurePrivileged( session )
         Long id = params.long('id')
