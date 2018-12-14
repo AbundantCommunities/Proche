@@ -19,7 +19,8 @@ class TagService {
                 shortDescription:it.asset.shortDescription,
                 description: it.asset.description,
                 organization: it.asset.organization,
-                communitityName: it.asset.community.name
+                communitityName: it.asset.community.name,
+                zeroCost: it.asset.zeroCost
             ]
         }
         return assets

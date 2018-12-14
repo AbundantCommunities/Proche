@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Public View</title>
+<title>View Public Asset</title>
 
 <meta name="layout" content="basic">
 

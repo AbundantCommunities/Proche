@@ -23,4 +23,13 @@ class TagController {
         def result = tagService.getAssets( tagText )
         render groovy.json.JsonOutput.toJson( result )
     }
+    
+    /**
+     * Test the REST call
+     */
+    def getAssets( ) {
+        [
+            tagName: params.tagName
+        ]
+    }
 }
