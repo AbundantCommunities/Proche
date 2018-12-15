@@ -23,7 +23,7 @@ class MapService {
         def communityName = URLEncoder.encode( asset.community?.name?:"City Hall", "UTF-8" )
 
         if( loc.equalsIgnoreCase("N/A") || !loc ) {
-            url = "https://maps.googleapis.com/maps/api/staticmap?center=${communityName},Edmonton,AB&zoom=15&size=900x900&maptype=roadmap&key=${googleApiKey}"
+            url = "https://maps.googleapis.com/maps/api/staticmap?center=${communityName},Edmonton,AB&zoom=15&size=480x480&maptype=roadmap&key=${googleApiKey}"
         } else {
             if( loc.endsWith("NW") ) {
                 loc += ",Edmonton,AB,Canada"
@@ -35,7 +35,7 @@ class MapService {
                     loc += "+NW,Edmonton,AB,Canada"
                 }
             }
-            url = "https://maps.googleapis.com/maps/api/staticmap?center=${communityName},Edmonton,AB&zoom=15&size=900x900&maptype=roadmap&markers=color:red|${loc}&key=${googleApiKey}"
+            url = "https://maps.googleapis.com/maps/api/staticmap?center=${communityName},Edmonton,AB&zoom=15&size=480x480&maptype=roadmap&markers=color:red|${loc}&key=${googleApiKey}"
         }
 
         return url

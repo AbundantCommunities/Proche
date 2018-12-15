@@ -22,7 +22,9 @@ section {
 <body>
 
 <div style="background-color:lightblue; padding-top: 10px; padding-left: 10px; padding-right: 00px; padding-bottom: 10px;">
-<a href="http://cuyeg.org"><img src="${resource(dir: 'images', file: 'CommunitiesUnited-COLOR-300dpi.png')}" alt="Communities United"/></a>
+<a href="http://cbc.ca"><img src="${resource(dir: 'images', file: 'back-button.png')}" alt="Back to previous page"/></a>
+&nbsp; &nbsp;
+<img src="${resource(dir: 'images', file: 'CommunitiesUnited-COLOR-300dpi.png')}" alt="Communities United" onclick="window.history.go(-1); return false;"/>
 </div>
 
 <div  style="font-family: Arial, Helvetica, sans-serif;">
@@ -31,7 +33,7 @@ section {
 <div style="background-color:lightblue;">Run by</div>
 <div style="margin-left: 1em; margin-top: 0.2em; margin-bottom: 0.4em;">${asset.organization}</div>
 
-<div style="background-color:lightblue;">Who gave us this description</div>
+<div style="background-color:lightblue;">They gave us this description</div>
 <div style="margin-left: 1em; margin-top: 0.2em; margin-bottom: 0.4em;">${asset.description}</div>
 
 <div style="background-color:lightblue;">Cost</div>
