@@ -19,6 +19,7 @@ section {
 <body>
 
 <section>
+    <h3>Job Training Opportunities</h3>
     <p id="proche-assets"></p>
 </section>
 

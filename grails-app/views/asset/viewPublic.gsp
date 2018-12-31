@@ -22,13 +22,13 @@ section {
 <body>
 
 <div style="background-color:lightblue; padding-top: 10px; padding-left: 10px; padding-right: 00px; padding-bottom: 10px;">
-<a href="http://cbc.ca"><img src="${resource(dir: 'images', file: 'back-button.png')}" alt="Back to previous page"/></a>
+<a href="http://cbc.ca"><img src="${resource(dir: 'images', file: 'back-button.png')}" alt="Back to previous page" onclick="window.history.go(-1); return false;"/></a>
 &nbsp; &nbsp;
-<img src="${resource(dir: 'images', file: 'CommunitiesUnited-COLOR-300dpi.png')}" alt="Communities United" onclick="window.history.go(-1); return false;"/>
+<a href="http://cuyeg.org"><img src="${resource(dir: 'images', file: 'CommunitiesUnited-COLOR-300dpi.png')}" alt="Communities United"/></a>
 </div>
 
 <div  style="font-family: Arial, Helvetica, sans-serif;">
-<h1>${asset.name}</h1>
+<h2>${asset.name}</h2>
 
 <div style="background-color:lightblue;">Run by</div>
 <div style="margin-left: 1em; margin-top: 0.2em; margin-bottom: 0.4em;">${asset.organization}</div>

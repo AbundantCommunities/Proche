@@ -5,6 +5,9 @@ package abcd
  * etc. This is a matter of administration. Sometimes this differs from what
  * Proche needs.
  * 
+ * Update: As of December 2018 we have a domain called Administration which looks
+ * after the data of one or more Community objects.
+ * 
  * Proche needs to work with geographical areas whose size is small enough
  * that residents therein feel some level of affinity for each other. There is
  * also a practical consideration. If an area is so large that a resident may
@@ -20,6 +23,7 @@ package abcd
 class Community {
 
     String name
+    static belongsTo = [administration:Administration]
 
     // The centre of this community
     BigDecimal centreLatitude  // in degrees; negative is south of equator

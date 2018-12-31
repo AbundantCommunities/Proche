@@ -9,6 +9,7 @@ package abcd
 class Tag {
 
     String text
+    Administration administration
 
     Date dateCreated
     Date lastUpdated
