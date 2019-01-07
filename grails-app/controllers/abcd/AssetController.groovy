@@ -131,31 +131,6 @@ class AssetController {
         ]
     }
 
-    def editClassification( ){
-        authenticateService.ensurePrivileged( session )
-        Long id = params.long('id')
-        log.info "Edit classification of asset ${id}"
-        def( Asset asset, Object[] honeycomb ) = honeycombService.getMinorClassesOfAsset( id )
-        [
-            asset: asset,
-            honeycomb: honeycomb
-        ]
-    }
-
-    def addToMinorClass( ) {
-        authenticateService.ensurePrivileged( session )
-        log.info "Add asset ${params.id} to minor class ${params.minorId}"
-        honeycombService.addToMinorClass( params.long('id'), params.long('minorId') )
-        redirect action:'editClassification', id:params.long('id')
-    }
-
-    def removeFromMinorClass( ) {
-        authenticateService.ensurePrivileged( session )
-        log.info "Remove asset ${params.id} from minor class ${params.minorId}"
-        honeycombService.removeFromMinorClass( params.long('id'), params.long('minorId') )
-        redirect action:'editClassification', id:params.long('id')
-    }
-
     def save() {
         authenticateService.ensurePrivileged( session )
 
@@ -175,6 +150,8 @@ class AssetController {
         }
 
         assetService.update( params )
+        
+        // TODO After saving changes, display paginated search results
         redirect action:'list'
     }
 

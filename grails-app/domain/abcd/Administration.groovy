@@ -7,11 +7,10 @@ class Administration {
 
     String name
 
+    static hasMany = [ communities: Community, tags: Tag ]
+
     Date dateCreated
     Date lastUpdated
-
-    static constraints = {
-    }
 
     String toString( ) {
         "Administration ${id}:${name}"

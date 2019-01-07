@@ -12,7 +12,7 @@ class AssetSuggestion {
     String suggesterContactInfo
     String suggesterComment
 
-    Community community
+    Community community  // We don't let anon submitter choose this.
     String name
     String description
     String organization

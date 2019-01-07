@@ -91,6 +91,7 @@ class AssetSuggestionController {
         switch( button ) {
             case 'Update':
                 log.info "Update ${params}"
+                // FIXME We fail to save the Neighbourhood back to suggested assets table
                 assetSuggestionService.update( params )
                 redirect action:'index'
                 break

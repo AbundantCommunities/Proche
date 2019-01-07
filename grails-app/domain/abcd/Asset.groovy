@@ -33,8 +33,6 @@ class Asset {
     String shortDescription
     static transients = [ 'shortDescription' ]
 
-    static hasMany = [ categories : Category ]
-
     static mapping = {
         locationLatitude  defaultValue: 0.0
         locationLongitude defaultValue: 0.0
@@ -52,7 +50,6 @@ class Asset {
         description maxSize: 1000, blank: false
         organization blank: false
         location blank: true
-        community nullable: true
         phoneNumber blank: true
         emailAddress blank: true
         url maxSize: 2000, blank: true

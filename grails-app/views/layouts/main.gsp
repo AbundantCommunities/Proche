@@ -24,8 +24,6 @@
             <li><a class="suggest" href="${createLink(uri: '/assetSuggestion/emptyForm')}">Suggest</a></li>
             <g:if test="${session.user}">
                 <li><a class="suggestions" href="${createLink(uri: '/assetSuggestion')}">Suggestions</a></li>
-                <li><a class="honeycomb" href="${createLink(uri: '/honeycomb')}">Honeycomb</a></li>
-                <li><a class="category" href="${createLink(uri: '/category')}">Categories</a></li>
                 <li><a class="logout" href="${createLink(uri: '/login/logout')}">Logout</a></li>
             </g:if>
         </ul>

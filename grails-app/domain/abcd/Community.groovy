@@ -23,7 +23,7 @@ package abcd
 class Community {
 
     String name
-    static belongsTo = [administration:Administration]
+    Administration administration
 
     // The centre of this community
     BigDecimal centreLatitude  // in degrees; negative is south of equator
