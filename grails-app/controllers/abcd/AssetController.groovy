@@ -93,15 +93,20 @@ class AssetController {
 
     def view( ){
         Long id = params.long('id')
-        log.info "View asset ${id}"
-        Asset asset = Asset.get( id )
-        if( asset ) {
-            [
-                asset: asset,
-                mapLink: mapService.locateOnMap( asset )
-            ]
+        if( id ) {
+            log.info "View asset ${id}"
+            Asset asset = Asset.get( id )
+            if( asset ) {
+                [
+                    asset: asset,
+                    mapLink: mapService.locateOnMap( asset )
+                ]
+            } else {
+                throw new Exception( "Asset ${id} not found")
+            }
         } else {
-            throw new Exception( "Asset ${id} not found")
+            log.info 'Googlebot sometimes crawls to /asset/view, with no params'
+            redirect controller:'uberTop', action:'index'
         }
     }
 
