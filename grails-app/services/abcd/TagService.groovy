@@ -7,7 +7,7 @@ class TagService {
 
     def getAssets( String tagText ) {
         Tag tag = Tag.findByText( tagText )
-        def taggedAssets = TagAsset.findAllByTag( tag,  [sort:'sortOrder'] )
+        def taggedAssets = TaggedAsset.findAllByTag( tag,  [sort:'sortOrder'] )
         log.info "For tag ${tagText} found ${taggedAssets.size()}"
         def assets = [ ]
         taggedAssets.each {
