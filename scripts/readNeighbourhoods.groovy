@@ -9,8 +9,8 @@ import org.locationtech.jts.geom.Geometry
 import groovy.time.TimeCategory 
 import groovy.time.TimeDuration
 
-def ourLat = 53.5395713
-def ourLon = -113.61572009999999
+def ourLat = 53.52784
+def ourLon = -113.47027
 
 Coordinate myCoordinate = new Coordinate( ourLon, ourLat )
 GeometryFactory factory = new GeometryFactory( )
