@@ -3,8 +3,8 @@ import static groovyx.net.http.HttpBuilder.configure
 import groovy.sql.Sql
 import groovy.json.JsonSlurper
 
-def sql = Sql.newInstance('jdbc:postgresql://localhost/abcd', 'myapp', 'sloj92GOM', 'org.postgresql.Driver')
-def rows = sql.rows('SELECT id, name, location FROM asset WHERE active ORDER BY id')
+def sql = Sql.newInstance('jdbc:postgresql://localhost/thehoods', 'myapp', 'sloj92GOM', 'org.postgresql.Driver')
+def rows = sql.rows('SELECT a.id, a.text FROM address AS a, block AS b WHERE a.id>2095 AND a.block_id = b.id AND b.neighbourhood_id = 2000 ORDER BY a.id')
 sql.connection.close( )
 
 println "Retrieved ${rows.size()} assets"
@@ -15,10 +15,10 @@ def http = configure {
 }
 
 rows.each{
-    println "------------\nRow ${it}"
-    if( it.location.length() > 3 ) {
-        if( it.location.substring(it.location.length()-2).equals('NW') ) {
-            def plussed = it.location.replaceAll(' ','+')
+    def stAddress = it.text + " NW"
+    if( stAddress.length() > 3 ) {
+        if( stAddress.substring(stAddress.length()-2).equals('NW') ) {
+            def plussed = stAddress.replaceAll(' ','+')
             def address = "${plussed},Edmonton,AB,Canada"
 
             def responseContent = http.get {
@@ -26,30 +26,23 @@ rows.each{
                 request.uri.query = [format:'json', q:address]
             }
 
-            // def json = jsonParser.parseText( responseContent )
             def json = responseContent
-            println "Response content is ${json}"
-            println "Response content class is ${json.class.name}"
-            println "Response content length is ${json.size()}"
-            json.each{
-                println "  **  ${it}"
-            }
             if( json.size() == 1 ) {
                 if( (json[0].class=='building') || (json[0].class=='place') ) {
-                    println "AWESOME!\n%COORD, ${it.id}, ${json[0].lat}, ${json[0].lon}"
+                    println "${stAddress}, ${json[0].lat}, ${json[0].lon}"
                 } else {
-                    println "ERROR class is neither building nor place for ${it.id}: ${json}\n"
+                    println "ERROR class is neither building nor place for ${it.id} ${stAddress}: ${json}"
                 }
             } else {
-                println "ERROR Not exactly one item for ${it.id}: ${json}\n"
+                println "ERROR Not exactly one item for id ${it.id} ${stAddress}: ${json}"
             }
             sleep 12000
 
         } else {
-            println "ERROR id ${}: location ${it.location} does not end in NW"
+            println "ERROR ${it.id} ${stAddress} does not end in NW"
         }
     } else {
-        println "ERROR id ${it.id}: location ${it.location} is too short"
+        println "ERROR ${it.id} ${stAddress} too short"
     }
 }
 
