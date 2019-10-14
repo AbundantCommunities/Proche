@@ -4,7 +4,7 @@ import groovy.sql.Sql
 import groovy.json.JsonSlurper
 
 def sql = Sql.newInstance('jdbc:postgresql://localhost/thehoods', 'myapp', 'sloj92GOM', 'org.postgresql.Driver')
-def rows = sql.rows('SELECT a.id, a.text FROM address AS a, block AS b WHERE a.id>2095 AND a.block_id = b.id AND b.neighbourhood_id = 2000 ORDER BY a.id')
+def rows = sql.rows('SELECT a.id, a.text FROM address AS a, block AS b WHERE a.block_id = b.id AND b.neighbourhood_id = 2000 ORDER BY a.id')
 sql.connection.close( )
 
 println "Retrieved ${rows.size()} assets"
