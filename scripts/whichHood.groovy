@@ -1,4 +1,4 @@
-@Grab('org.locationtech.jts:jts-core:1.6.0')
+// @Grab('org.locationtech.jts:jts-core:1.6.0')
 @Grab('com.xlson.groovycsv:groovycsv:1.1')
 
 import static com.xlson.groovycsv.CsvParser.parseCsv
