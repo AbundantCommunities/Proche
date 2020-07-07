@@ -9,6 +9,7 @@ import org.locationtech.jts.geom.Geometry
 import groovy.time.TimeCategory 
 import groovy.time.TimeDuration
 
+// We will tell the user in what neighbourhood these coordinates exist
 def ourLat = 53.52784
 def ourLon = -113.47027
 
@@ -16,8 +17,8 @@ Coordinate myCoordinate = new Coordinate( ourLon, ourLat )
 GeometryFactory factory = new GeometryFactory( )
 Geometry myPoint = factory.createPoint( myCoordinate )
 
-def csvFile = new File('/Users/theguy/Downloads/NEIGHBOURHOODS_SHAPE.csv')
-// NUMBER,AREA_KM2,NAME,the_geom
+def csvFile = new File('NEIGHBOURHOODS_SHAPE.csv')
+// NAME,AREA_KM2,the_geom,NUMBER
 
 def geomReader = new WKTReader()
 
@@ -25,13 +26,9 @@ csvFile.withReader{ reader ->
     def hoods = parseCsv( reader )
     def start = new Date( )
     for(hood in hoods) {
-        // hood is a com.xlson.groovycsv.PropertyMapper
-        // hood.columns is [const:0,  assetId:1,  longitude:2,  latitude:3]
-        // hood.values is like [%COORD,  1018,  53.6039795357143,  -113.377735078571]
-        // println "${hood.values[2]} is SOMEWHERE" // [${home.values[2]},${home.values[3]}]"
-        def geom = geomReader.read( hood.values[3] )
+        def geom = geomReader.read( hood.the_geom )
         if( geom.contains(myPoint) ) {
-            println "Am I in ${hood.values[2]}?"
+            println "Am I in ${hood.NAME}?"
         }
     }
     def stop = new Date( )
