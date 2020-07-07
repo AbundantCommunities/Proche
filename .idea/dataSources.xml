@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Proche dev" uuid="50c27dd6-d2a7-4c7e-a668-3142d7ad3b27">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>grails
+
+/Users/theguy/IdeaProjects/Proche/grails-app/conf/DataSource.groovy</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost/abcd</jdbc-url>
+    </data-source>
+  </component>
+</project>
